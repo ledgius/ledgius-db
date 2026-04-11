@@ -1,0 +1,12 @@
+-- Spec references: A-0021.
+--
+-- V1.05 — Review Bundles and Pipeline Jobs
+--
+-- NOTE: As of V1.02, the review and publication tables (artifact_test_case,
+-- review_task, review_decision, publication_bundle, bundle_artifact,
+-- pipeline_job) were consolidated into the knowledge pipeline migration.
+--
+-- This script is intentionally empty — all tables from source migration 005
+-- are already created by V1.02__knowledge_pipeline.sql.
+--
+-- No DDL required.

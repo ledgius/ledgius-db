@@ -1,0 +1,16 @@
+-- Spec references: A-0021.
+--
+-- V1.09 — Audit Metadata Columns
+--
+-- SKIPPED: All columns added by source migration 009 are already present in
+-- V1.00__core_schema.sql:
+--
+--   transactions:           created_at, updated_at, created_by, updated_by (V1.00 lines 604-607)
+--   account:                created_at, updated_at, created_by, updated_by (V1.00 lines 98-101)
+--   account_heading:        created_at, updated_at, created_by, updated_by (V1.00 lines 63-65)
+--   entity:                 updated_at, created_by, updated_by (V1.00 lines 392-394)
+--   entity_credit_account:  created_at, updated_at, created_by, updated_by (V1.00 lines 513-516)
+--
+-- bank_transaction audit columns are added by V1.01__bank_import_tables.sql.
+--
+-- No DDL required.
