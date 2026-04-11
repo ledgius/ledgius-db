@@ -1,0 +1,36 @@
+# ============================================================
+# Looking and Feeling Good — Business Configuration
+# ============================================================
+# This file defines the overall business profile for the demo
+# data set. Edit freely — no coding required.
+
+business_name: "Looking and Feeling Good"
+
+# How many days of transaction history to generate (ending today)
+period_days: 120
+
+currency: AUD
+
+# GST rate as a decimal (0.10 = 10%)
+gst_rate: 0.10
+
+# Approximate monthly revenue target (net, ex-GST).
+# Actual amount will vary ±25% due to randomised daily bookings.
+target_monthly_revenue: 4000
+
+# Payment terms (days) for invoices and bills
+invoice_payment_terms: 14
+bill_payment_terms: 30
+
+# All seeded data uses this prefix in reference numbers.
+# This makes it trivial to find and remove all demo data.
+# Change this if you need to run multiple datasets side-by-side.
+reference_prefix: "LG"
+
+# Percentage of days with no bookings (weekends, quiet days)
+# 0.20 = roughly 1 in 5 days has no services
+skip_day_chance: 0.20
+
+# Random seed for reproducible data. Same seed = same data every time.
+# Change this to get a different random mix of services and amounts.
+random_seed: 42

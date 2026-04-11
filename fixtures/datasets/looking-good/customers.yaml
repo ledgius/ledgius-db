@@ -1,0 +1,25 @@
+# ============================================================
+# Customer List
+# ============================================================
+# These are the clients who book services. Each customer gets
+# a credit account in Accounts Receivable.
+#
+# Add or remove names freely — the seed tool handles the rest.
+# Customer codes are auto-generated as LG-CUST-001, LG-CUST-002, etc.
+
+customers:
+  - Sarah Mitchell
+  - Karen O'Brien
+  - Jessica Tran
+  - Emma Nguyen
+  - Rachel Wong
+  - Lisa Patel
+  - Amy Henderson
+  - Megan Taylor
+  - Sophie Clarke
+  - Hannah Davis
+  - Olivia Martinez
+  - Chloe Kim
+  - Natalie Brown
+  - Lauren Chen
+  - Jade Wilson

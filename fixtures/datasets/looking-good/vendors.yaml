@@ -1,0 +1,24 @@
+# ============================================================
+# Vendor / Supplier List
+# ============================================================
+# These are the businesses you buy supplies from. Each vendor
+# gets a credit account in Accounts Payable.
+#
+# The "code" field becomes the vendor's account number in the
+# system (prefixed with LG- automatically).
+
+vendors:
+  - name: "Massage Warehouse Australia"
+    code: "VEND-MW01"
+
+  - name: "Nail Supplies Direct"
+    code: "VEND-NS01"
+
+  - name: "ProClean Solutions"
+    code: "VEND-PC01"
+
+  - name: "PrintHub Express"
+    code: "VEND-PH01"
+
+  - name: "Social Boost Advertising"
+    code: "VEND-SB01"

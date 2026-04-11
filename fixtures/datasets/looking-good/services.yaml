@@ -1,0 +1,134 @@
+# ============================================================
+# Service Catalogue
+# ============================================================
+# Each service is offered to customers and generates a sales
+# invoice. Prices are net (ex-GST) — GST is added automatically.
+#
+# Fields:
+#   name       — appears on the invoice line item
+#   category   — grouping (massage, nails) for your reference
+#   min_price  — lowest price charged for this service (AUD)
+#   max_price  — highest price charged (randomised between min/max)
+#   min_mins   — shortest appointment duration
+#   max_mins   — longest appointment duration
+#
+# The revenue account used is "4020" (Services Revenue).
+# To change this, edit the accounts section in config.yaml.
+
+services:
+
+  # ── Massage Services ──
+  # Delivered from the mobile cabin on the tandem trailer.
+  # Great for events, corporate wellness, and home visits.
+
+  - name: "Relaxation Massage 60min"
+    category: massage
+    min_price: 75
+    max_price: 95
+    min_mins: 60
+    max_mins: 60
+
+  - name: "Deep Tissue Massage 60min"
+    category: massage
+    min_price: 85
+    max_price: 105
+    min_mins: 60
+    max_mins: 60
+
+  - name: "Deep Tissue Massage 90min"
+    category: massage
+    min_price: 110
+    max_price: 135
+    min_mins: 90
+    max_mins: 90
+
+  - name: "Hot Stone Massage 90min"
+    category: massage
+    min_price: 120
+    max_price: 135
+    min_mins: 90
+    max_mins: 90
+
+  - name: "Remedial Massage 120min"
+    category: massage
+    min_price: 125
+    max_price: 135
+    min_mins: 120
+    max_mins: 120
+
+  - name: "Swedish Massage 60min"
+    category: massage
+    min_price: 75
+    max_price: 90
+    min_mins: 60
+    max_mins: 60
+
+  # ── Nail Technician Services ──
+
+  - name: "Express Manicure"
+    category: nails
+    min_price: 45
+    max_price: 55
+    min_mins: 30
+    max_mins: 30
+
+  - name: "Deluxe Manicure"
+    category: nails
+    min_price: 55
+    max_price: 65
+    min_mins: 45
+    max_mins: 45
+
+  - name: "Express Pedicure"
+    category: nails
+    min_price: 55
+    max_price: 65
+    min_mins: 45
+    max_mins: 45
+
+  - name: "Deluxe Pedicure"
+    category: nails
+    min_price: 65
+    max_price: 75
+    min_mins: 60
+    max_mins: 60
+
+  - name: "Gel Nail Extensions — Short"
+    category: nails
+    min_price: 85
+    max_price: 95
+    min_mins: 90
+    max_mins: 90
+
+  - name: "Gel Nail Extensions — Medium"
+    category: nails
+    min_price: 95
+    max_price: 110
+    min_mins: 90
+    max_mins: 105
+
+  - name: "Acrylic Nail Extensions — Full Set"
+    category: nails
+    min_price: 100
+    max_price: 120
+    min_mins: 105
+    max_mins: 120
+
+  - name: "Nail Art Add-on"
+    category: nails
+    min_price: 15
+    max_price: 25
+    min_mins: 15
+    max_mins: 30
+
+# ── Gift Vouchers ──
+# These are sold separately and invoiced as "Gift Voucher".
+# They use the same revenue account as services.
+
+gift_vouchers:
+  # How often a voucher is sold (every N days, approximately)
+  frequency_days: 6
+  # Chance of a voucher being sold on an eligible day (0.85 = 85%)
+  chance: 0.85
+  # Available voucher denominations (one is chosen at random)
+  amounts: [75, 80, 90, 100, 120]

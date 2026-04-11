@@ -1,0 +1,28 @@
+# ============================================================
+# Demo User Accounts
+# ============================================================
+# These users can sign in when running in multi-tenant mode.
+# In single-tenant mode (local dev default), auth is bypassed.
+#
+# Roles:
+#   owner              — business owner, full access, approvals
+#   bookkeeper         — day-to-day data entry, invoices, bills
+#   master_accountant  — BAS lodgement, reports, period close, rules
+#   accountant         — similar to master but without admin/rules
+#   viewer             — read-only access
+
+users:
+  - email: "steph@lookinggood.com.au"
+    display_name: "Steph Morrison"
+    password: "demo1234"
+    role: owner
+
+  - email: "jade@lookinggood.com.au"
+    display_name: "Jade Wilson"
+    password: "demo1234"
+    role: bookkeeper
+
+  - email: "matt@crestline.com.au"
+    display_name: "Matt Bush"
+    password: "demo1234"
+    role: master_accountant

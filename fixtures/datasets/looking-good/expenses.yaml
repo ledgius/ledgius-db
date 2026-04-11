@@ -1,0 +1,150 @@
+# ============================================================
+# Expense Items
+# ============================================================
+# Each expense generates a bill (accounts payable) from the
+# named vendor. Amounts are net (ex-GST).
+#
+# Fields:
+#   description     — appears on the bill line item
+#   vendor          — must match a "code" from vendors.yaml
+#   min_amount      — lowest amount for this expense (AUD)
+#   max_amount      — highest amount (randomised between min/max)
+#   frequency_days  — how often this expense recurs (0 = one-off)
+#   account         — chart of accounts code for the expense
+#
+# Common accounts:
+#   5010 = Purchases (cost of goods/supplies)
+#   6110 = Advertising & Promotion
+#   6180 = Office Supplies (cleaning, consumables)
+
+expenses:
+
+  # ── Massage Supplies ──
+  # Ordered from Massage Warehouse Australia
+
+  - description: "Massage oil — premium blend 5L"
+    vendor: "VEND-MW01"
+    min_amount: 45
+    max_amount: 65
+    frequency_days: 30    # monthly
+    account: "5010"
+
+  - description: "Massage towels — white cotton 12pk"
+    vendor: "VEND-MW01"
+    min_amount: 55
+    max_amount: 75
+    frequency_days: 60    # every 2 months
+    account: "5010"
+
+  - description: "Towel warmer replacement element"
+    vendor: "VEND-MW01"
+    min_amount: 85
+    max_amount: 95
+    frequency_days: 0     # one-off purchase
+    account: "5010"
+
+  - description: "Massage table sheets — fitted 6pk"
+    vendor: "VEND-MW01"
+    min_amount: 40
+    max_amount: 55
+    frequency_days: 45
+    account: "5010"
+
+  # ── Nail Supplies ──
+  # Ordered from Nail Supplies Direct
+
+  - description: "Gel polish collection — 12 colours"
+    vendor: "VEND-NS01"
+    min_amount: 65
+    max_amount: 85
+    frequency_days: 45
+    account: "5010"
+
+  - description: "Acrylic powder + liquid set"
+    vendor: "VEND-NS01"
+    min_amount: 55
+    max_amount: 70
+    frequency_days: 60
+    account: "5010"
+
+  - description: "Cuticle oil — jojoba blend 250ml"
+    vendor: "VEND-NS01"
+    min_amount: 18
+    max_amount: 25
+    frequency_days: 30
+    account: "5010"
+
+  - description: "Nail files + buffers assorted 50pk"
+    vendor: "VEND-NS01"
+    min_amount: 22
+    max_amount: 30
+    frequency_days: 45
+    account: "5010"
+
+  - description: "UV/LED nail lamp"
+    vendor: "VEND-NS01"
+    min_amount: 120
+    max_amount: 150
+    frequency_days: 0     # one-off equipment purchase
+    account: "5010"
+
+  - description: "Nail drill bits — replacement set"
+    vendor: "VEND-NS01"
+    min_amount: 35
+    max_amount: 45
+    frequency_days: 0     # one-off
+    account: "5010"
+
+  - description: "Nail tips — clear 500pk"
+    vendor: "VEND-NS01"
+    min_amount: 25
+    max_amount: 35
+    frequency_days: 60
+    account: "5010"
+
+  # ── Cleaning Supplies ──
+  # Ordered from ProClean Solutions
+
+  - description: "Cleaning solvent — antibacterial 5L"
+    vendor: "VEND-PC01"
+    min_amount: 28
+    max_amount: 35
+    frequency_days: 30
+    account: "6180"
+
+  - description: "Disinfectant wipes — 200pk"
+    vendor: "VEND-PC01"
+    min_amount: 15
+    max_amount: 22
+    frequency_days: 30
+    account: "6180"
+
+  - description: "Microfibre cleaning cloths 20pk"
+    vendor: "VEND-PC01"
+    min_amount: 18
+    max_amount: 25
+    frequency_days: 60
+    account: "6180"
+
+  # ── Advertising & Marketing ──
+
+  - description: "Monthly social media advertising"
+    vendor: "VEND-SB01"
+    min_amount: 55
+    max_amount: 65
+    frequency_days: 30    # monthly
+    account: "6110"
+
+  - description: "Business cards — 500 qty"
+    vendor: "VEND-PH01"
+    min_amount: 45
+    max_amount: 55
+    frequency_days: 0     # one-off print run
+    account: "6110"
+
+  - description: "Brochures — tri-fold A4 250 qty"
+    vendor: "VEND-PH01"
+    min_amount: 85
+    max_amount: 110
+    frequency_days: 0     # one-off print run
+    account: "6110"
