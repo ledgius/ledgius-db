@@ -1,0 +1,24 @@
+app = "ledgius-db"
+primary_region = "syd"
+
+[build]
+
+[mounts]
+  source = "ledgius_pg_data"
+  destination = "/var/lib/postgresql/data"
+
+[env]
+  POSTGRES_DB = "ledgius"
+  PGDATA = "/var/lib/postgresql/data/pgdata"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 5432
+
+  [[services.ports]]
+    port = 5432
+    handlers = ["pg_tls"]
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
