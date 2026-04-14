@@ -1,0 +1,13 @@
+-- Spec references: A-0021.
+--
+-- V1.10 — Contact Status Column
+--
+-- SKIPPED: The status column on entity_credit_account is already present in
+-- V1.00__core_schema.sql (line 517):
+--
+--   status text DEFAULT 'active'::text NOT NULL
+--
+-- The column supports the Active / OnHold / Archived contact lifecycle
+-- per the entity state machine spec.
+--
+-- No DDL required.
