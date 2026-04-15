@@ -1,4 +1,5 @@
--- Spec references: A-0021.
+-- lsmb-exempt: Ledgius-shape audit_log_immutable trigger (per R-0040 audit-trail spec) enforces append-only on the audit_log table — purposefully retained, not LSMB-era.
+-- Spec references: A-0021, R-0040, R-0054.
 --
 -- V1.07 — Recurring Schedules, Transaction Templates, Audit Log, Exchange Rates
 --

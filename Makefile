@@ -74,6 +74,21 @@ fly-migrate-platform: ## Run platform migrations on Fly.io
 fly-status: ## Show migration status on Fly.io
 	fly ssh console -C "/app/flyway.sh status tenant"
 
+# ── LSMB legacy artifact migration tracking (R-0054, A-0030, T-0028) ──
+
+.PHONY: lsmb-lint
+lsmb-lint: ## Run the LSMB legacy artifact CI guardrail (block new triggers/functions in migrations)
+	cd cmd/lsmb-lint && go run . --paths=../../migrations/tenant,../../migrations/platform,../../tenant,../../platform
+
+.PHONY: lsmb-audit
+lsmb-audit: ## Show LSMB migration progress summary (status counts + completeness %)
+	cd cmd/lsmb-lint && go run . --audit \
+		--inventory=../../../ledgius-specs/domains/architecture/migration-safety/lsmb_inventory.md
+
+.PHONY: lsmb-audit-db
+lsmb-audit-db: ## Run the SQL audit query against the live DB (lists all triggers + functions present)
+	PGPASSWORD=$(DB_PASSWORD) psql -h $(DB_HOST) -p $(DB_PORT) -U $(DB_USER) -d $(TENANT_DB) -f scripts/lsmb_inventory_audit.sql
+
 # ── Help ──
 
 .PHONY: help

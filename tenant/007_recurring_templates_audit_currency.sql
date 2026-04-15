@@ -1,4 +1,6 @@
+-- lsmb-exempt: Ledgius-shape audit_log_immutable trigger (per R-0040 audit-trail spec) enforces append-only on the audit_log table — purposefully retained, not LSMB-era.
 -- WP6: Recurring transactions, templates, audit log, currency management.
+-- Spec references: R-0040, R-0054.
 
 -- =============================================================================
 -- 1. Recurring Transactions
