@@ -4,6 +4,11 @@
 --   Basiq webhook security:        https://api.basiq.io/docs/webhooks-security
 --   Basiq consent management:      https://api.basiq.io/docs/consent
 --   CDR portal:                    https://www.cdr.gov.au/
+--
+-- Note: an earlier copy of this migration shipped under the legacy
+-- ledgius-db/tenant/018_bank_feeds.sql path which Flyway does not read.
+-- This V1.26 file is the canonical Flyway-tracked version. The legacy
+-- file is removed in the same PR.
 
 -- =============================================================================
 -- 1. bank_transaction.source — distinguish feed vs manual upload
@@ -42,13 +47,9 @@ CREATE TABLE IF NOT EXISTS bank_feed_provider_user (
     UNIQUE (provider, provider_user_id)
 );
 
-COMMENT ON TABLE bank_feed_provider_user IS
-    'Provider-side user identifier for a tenant. Basiq creates one user per consumer; '
-    'Ledgius treats this as one row per tenant. All bank_feed_connection rows reference this user.';
-COMMENT ON COLUMN bank_feed_provider_user.provider_user_id IS
-    'Basiq user ID. Used in all subsequent Basiq API calls (consent token, transactions fetch).';
-COMMENT ON COLUMN bank_feed_provider_user.contact_email IS
-    'Email address registered with Basiq for the user. Required by Basiq CreateUser API.';
+COMMENT ON TABLE bank_feed_provider_user IS 'Provider-side user identifier for a tenant. Basiq creates one user per consumer; Ledgius treats this as one row per tenant. All bank_feed_connection rows reference this user.';
+COMMENT ON COLUMN bank_feed_provider_user.provider_user_id IS 'Basiq user ID. Used in all subsequent Basiq API calls (consent token, transactions fetch).';
+COMMENT ON COLUMN bank_feed_provider_user.contact_email IS 'Email address registered with Basiq for the user. Required by Basiq CreateUser API.';
 
 -- =============================================================================
 -- 3. Bank feed connection — per linked bank account
@@ -77,15 +78,10 @@ CREATE TABLE IF NOT EXISTS bank_feed_connection (
     updated_at              TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-COMMENT ON TABLE bank_feed_connection IS
-    'One row per connected bank account. References bank_feed_provider_user (Basiq user) '
-    'and the GL account (bank_account_id) once the user maps it. See R-0049 AC-1, AC-4.';
-COMMENT ON COLUMN bank_feed_connection.bank_account_id IS
-    'NULL until the user maps this Basiq account to a Ledgius GL account.';
-COMMENT ON COLUMN bank_feed_connection.consent_expires_at IS
-    'CDR consent expiry. Per CDR rules and Basiq Business Consumer Consent docs, max 12 months from grant.';
-COMMENT ON COLUMN bank_feed_connection.status IS
-    'Lifecycle: pending (awaiting account map) → active → expiring (T-7) → expired | disconnected | error.';
+COMMENT ON TABLE bank_feed_connection IS 'One row per connected bank account. References bank_feed_provider_user (Basiq user) and the GL account (bank_account_id) once the user maps it. See R-0049 AC-1, AC-4.';
+COMMENT ON COLUMN bank_feed_connection.bank_account_id IS 'NULL until the user maps this Basiq account to a Ledgius GL account.';
+COMMENT ON COLUMN bank_feed_connection.consent_expires_at IS 'CDR consent expiry. Per CDR rules and Basiq Business Consumer Consent docs, max 12 months from grant.';
+COMMENT ON COLUMN bank_feed_connection.status IS 'Lifecycle: pending (awaiting account map) -> active -> expiring (T-7) -> expired | disconnected | error.';
 
 CREATE INDEX IF NOT EXISTS idx_bank_feed_status
     ON bank_feed_connection(status);
@@ -126,21 +122,12 @@ CREATE TABLE IF NOT EXISTS bank_feed_event_log (
     request_id              TEXT NULL
 );
 
-COMMENT ON TABLE bank_feed_event_log IS
-    'Append-only journal of every live-feed event. Each event writes a single row at begin '
-    '(status=running) and is updated to success/failed/partial on completion. '
-    'Per R-0049 AC-9 every begin MUST have a matching end. See A-0025.';
-COMMENT ON COLUMN bank_feed_event_log.event_type IS
-    'Discriminator for the lifecycle event being recorded — see R-0049 AC-9 table.';
-COMMENT ON COLUMN bank_feed_event_log.provider_job_id IS
-    'Basiq job ID where applicable (connection.create, connection.refresh) — supports '
-    'cross-referencing against the Basiq dashboard.';
-COMMENT ON COLUMN bank_feed_event_log.request_payload IS
-    'Outbound request payload for this event (e.g. transactions.fetch query parameters).';
-COMMENT ON COLUMN bank_feed_event_log.response_payload IS
-    'Inbound response payload — body for webhook.received, summary for transactions.fetch.';
-COMMENT ON COLUMN bank_feed_event_log.error_payload IS
-    'Structured error context (HTTP status, Basiq error body, retry counts) on failure.';
+COMMENT ON TABLE bank_feed_event_log IS 'Append-only journal of every live-feed event. Each event writes a single row at begin (status=running) and is updated to success/failed/partial on completion. Per R-0049 AC-9 every begin MUST have a matching end. See A-0025.';
+COMMENT ON COLUMN bank_feed_event_log.event_type IS 'Discriminator for the lifecycle event being recorded — see R-0049 AC-9 table.';
+COMMENT ON COLUMN bank_feed_event_log.provider_job_id IS 'Basiq job ID where applicable (connection.create, connection.refresh) — supports cross-referencing against the Basiq dashboard.';
+COMMENT ON COLUMN bank_feed_event_log.request_payload IS 'Outbound request payload for this event (e.g. transactions.fetch query parameters).';
+COMMENT ON COLUMN bank_feed_event_log.response_payload IS 'Inbound response payload — body for webhook.received, summary for transactions.fetch.';
+COMMENT ON COLUMN bank_feed_event_log.error_payload IS 'Structured error context (HTTP status, Basiq error body, retry counts) on failure.';
 
 CREATE INDEX IF NOT EXISTS idx_bank_feed_event_connection
     ON bank_feed_event_log(connection_id, started_at DESC);

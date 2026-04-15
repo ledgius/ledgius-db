@@ -5,6 +5,11 @@
 -- a payment transaction to a vendor (entity_credit_account) when the LSMB
 -- data model can't.
 --
+-- Note: an earlier copy of this migration shipped under the legacy
+-- ledgius-db/tenant/019_payment_vendor_link.sql path which Flyway does
+-- not read. This V1.27 file is the canonical Flyway-tracked version.
+-- The legacy file is removed in the same PR.
+--
 -- Use cases (per architecture discussion):
 --   1. Legacy payments imported before vendors were set up (parity test data,
 --      MYOB pre-import payments)
@@ -19,15 +24,6 @@
 --     double-attribution
 --   - Aligns with R-0054 architectural direction: all new logic in Go,
 --     LSMB tables are quarantined and migrated out over time
---
--- The ListPayments query coalesces vendor attribution from two sources:
---   a) LSMB-derived: payment.acc_trans.open_item_id → ap.open_item_id
---      → entity_credit_account (the canonical path for normal payments
---      that allocate against bills via the AP API)
---   b) Override: this table — used when (a) is null
---
--- The attach-vendor endpoint refuses if a vendor is already attributed
--- via either source, so this table doesn't drift from LSMB-derived truth.
 
 CREATE TABLE IF NOT EXISTS payment_vendor_link (
     trans_id              INT PRIMARY KEY REFERENCES transactions(id) ON DELETE CASCADE,
@@ -37,22 +33,13 @@ CREATE TABLE IF NOT EXISTS payment_vendor_link (
     notes                 TEXT
 );
 
-COMMENT ON TABLE payment_vendor_link IS
-    'Ledgius-shape vendor attribution for payment transactions whose LSMB-side ' ||
-    'allocation linkage (acc_trans.open_item_id → ap) is missing. Pure metadata ' ||
-    'enrichment — GL postings are not touched. Used by ListPayments query as a ' ||
-    'fallback when LSMB-derived vendor is NULL.';
+COMMENT ON TABLE payment_vendor_link IS 'Ledgius-shape vendor attribution for payment transactions whose LSMB-side allocation linkage (acc_trans.open_item_id -> ap) is missing. Pure metadata enrichment — GL postings are not touched. Used by ListPayments query as a fallback when LSMB-derived vendor is NULL.';
 
-COMMENT ON COLUMN payment_vendor_link.trans_id IS
-    'The payment transaction this attribution applies to. PRIMARY KEY guarantees ' ||
-    'one attribution per payment.';
+COMMENT ON COLUMN payment_vendor_link.trans_id IS 'The payment transaction this attribution applies to. PRIMARY KEY guarantees one attribution per payment.';
 
-COMMENT ON COLUMN payment_vendor_link.entity_credit_account IS
-    'The vendor (entity_credit_account row) this payment is attributed to.';
+COMMENT ON COLUMN payment_vendor_link.entity_credit_account IS 'The vendor (entity_credit_account row) this payment is attributed to.';
 
-COMMENT ON COLUMN payment_vendor_link.attributed_by IS
-    'User who created the attribution. NULL for system-driven attribution ' ||
-    '(e.g. future bank-feed auto-attribution).';
+COMMENT ON COLUMN payment_vendor_link.attributed_by IS 'User who created the attribution. NULL for system-driven attribution (e.g. future bank-feed auto-attribution).';
 
 CREATE INDEX IF NOT EXISTS idx_payment_vendor_link_eca
     ON payment_vendor_link(entity_credit_account);
