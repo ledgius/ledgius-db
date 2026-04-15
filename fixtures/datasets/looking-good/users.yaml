@@ -1,15 +1,24 @@
 # ============================================================
 # Demo User Accounts
 # ============================================================
-# These users can sign in when running in multi-tenant mode.
-# In single-tenant mode (local dev default), auth is bypassed.
+# These users get inserted into ledgius_platform.users by the seed
+# runner (cmd: `make seed-load DATASET=looking-good`). Each user is
+# also granted a tenant_membership against the default tenant for
+# this dataset (see config.yaml's tenant section).
 #
-# Roles:
+# Intra-tenant roles:
 #   owner              — business owner, full access, approvals
 #   bookkeeper         — day-to-day data entry, invoices, bills
 #   master_accountant  — BAS lodgement, reports, period close, rules
 #   accountant         — similar to master but without admin/rules
 #   viewer             — read-only access
+#
+# platform_admin: true grants the user the is_platform_admin flag
+# on ledgius_platform.users — visible in the sidebar's Platform
+# Admin section, can hit /api/v1/admin/* endpoints. Reserved for
+# Ledgius staff (Crestline / Ledgius team), not customer demo
+# personas. Will be replaced by the platform_owner population
+# assignment when R-0052 lands.
 
 users:
   - email: "steph@lookinggood.com.au"
@@ -26,3 +35,10 @@ users:
     display_name: "Matt Bush"
     password: "demo1234"
     role: master_accountant
+    platform_admin: true
+
+  - email: "matt@ledgius.com"
+    display_name: "Matt Bush (Ledgius)"
+    password: "demo1234"
+    role: owner
+    platform_admin: true

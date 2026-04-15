@@ -3,7 +3,7 @@
 
 # ── Connection defaults (override via env or .env.local) ──
 DB_HOST ?= localhost
-DB_PORT ?= 5432
+DB_PORT ?= 5436
 DB_USER ?= ledgius
 DB_PASSWORD ?= ledgius_dev_password
 TENANT_DB ?= ledgius
@@ -88,6 +88,22 @@ lsmb-audit: ## Show LSMB migration progress summary (status counts + completenes
 .PHONY: lsmb-audit-db
 lsmb-audit-db: ## Run the SQL audit query against the live DB (lists all triggers + functions present)
 	PGPASSWORD=$(DB_PASSWORD) psql -h $(DB_HOST) -p $(DB_PORT) -U $(DB_USER) -d $(TENANT_DB) -f scripts/lsmb_inventory_audit.sql
+
+# ── Seed data ──
+
+# Default dataset for the seed targets — override with: make seed-load DATASET=other
+DATASET ?= looking-good
+
+.PHONY: seed-load
+seed-load: ## Seed users + tenant + memberships from a YAML dataset (DATASET=looking-good by default)
+	cd seed && go run . --dataset=$(DATASET) --action=load \
+		--platform-db="host=$(DB_HOST) port=$(DB_PORT) user=$(DB_USER) password=$(DB_PASSWORD) dbname=$(PLATFORM_DB) sslmode=disable" \
+		--tenant-db-name=$(TENANT_DB)
+
+.PHONY: seed-unload
+seed-unload: ## Remove the tenant + memberships created by seed-load (users retained)
+	cd seed && go run . --dataset=$(DATASET) --action=unload \
+		--platform-db="host=$(DB_HOST) port=$(DB_PORT) user=$(DB_USER) password=$(DB_PASSWORD) dbname=$(PLATFORM_DB) sslmode=disable"
 
 # ── Help ──
 
