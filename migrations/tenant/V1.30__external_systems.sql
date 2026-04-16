@@ -61,9 +61,15 @@ COMMENT ON TABLE external_system IS
     'Registry of peer accounting systems Ledgius can interoperate with (import and/or export). '
     'Codes are stable lowercase snake_case. Startup parity check enforces alignment with Go typed constants. '
     'Rows seeded via R__09_seed_external_systems.sql.';
-COMMENT ON COLUMN external_system.code IS 'Stable identifier, lowercase snake_case. Referenced by FK from connection and watermark tables.';
-COMMENT ON COLUMN external_system.country IS 'ISO 3166-1 alpha-2 country code — the primary market the system serves.';
-COMMENT ON COLUMN external_system.active IS 'Inactive rows are retained for audit traceability but may not be used for new runs.';
+COMMENT ON COLUMN external_system.code IS 'Stable identifier, lowercase snake_case. Referenced by FK from connection and watermark tables. E.g. ''xero'', ''myob''.';
+COMMENT ON COLUMN external_system.display_name IS 'Human-readable name for UI display. E.g. ''Xero'', ''MYOB''.';
+COMMENT ON COLUMN external_system.country IS 'ISO 3166-1 alpha-2 country code — the primary market the system serves. E.g. ''AU'', ''NZ'', ''US''.';
+COMMENT ON COLUMN external_system.supports_import_csv IS 'Ledgius can consume CSV/file exports from this system (TRUE) or not (FALSE).';
+COMMENT ON COLUMN external_system.supports_import_api IS 'Ledgius can pull data directly via this system''s API (TRUE) or not (FALSE).';
+COMMENT ON COLUMN external_system.supports_export_csv IS 'Ledgius can produce CSV bundles that this system''s importer accepts (TRUE) or not (FALSE).';
+COMMENT ON COLUMN external_system.supports_export_api IS 'Ledgius can push data directly via this system''s API (TRUE) or not (FALSE).';
+COMMENT ON COLUMN external_system.active IS 'Inactive rows are retained for audit traceability but may not be used for new runs or connections.';
+COMMENT ON COLUMN external_system.introduced_at IS 'Timestamp when this external system was first registered. Informational — used in admin/support views.';
 
 -- =============================================================================
 -- 2. external_system_connection — per-tenant credential binding
@@ -109,14 +115,26 @@ CREATE INDEX IF NOT EXISTS
     idx_external_system_connection_tenant
     ON external_system_connection (tenant_id, external_system_code);
 
+COMMENT ON INDEX uq_external_system_connection_active IS
+    'Enforces at most one active connection per (tenant, external_system). Uses partial unique index scoped to active rows.';
+COMMENT ON INDEX idx_external_system_connection_tenant IS
+    'Supports lookup of all connections (any status) for a tenant + system pair — used by connection history and audit views.';
+
 COMMENT ON TABLE external_system_connection IS
     'Per-tenant OAuth / credential binding to an external_system. Exactly one active row per (tenant, system). '
     'Disconnecting marks the row inactive without deletion so audit history remains traceable. Credential payload '
     'shape is system-specific (see credential_schema_version) and stored encrypted with the tenant KMS key.';
+COMMENT ON COLUMN external_system_connection.id IS 'Surrogate PK. Auto-generated UUID.';
+COMMENT ON COLUMN external_system_connection.tenant_id IS 'Owning tenant. Combined with external_system_code forms the logical unique key (enforced via partial unique index on active rows).';
+COMMENT ON COLUMN external_system_connection.external_system_code IS 'FK to external_system(code). Identifies which peer system this connection targets. E.g. ''xero''.';
+COMMENT ON COLUMN external_system_connection.status IS 'Connection lifecycle state: active (usable), disconnected (user-initiated), expired (credential expired and refresh failed).';
+COMMENT ON COLUMN external_system_connection.credential_payload_enc IS
+    'Encrypted credential blob. Shape determined by credential_schema_version. Encrypted with tenant KMS key.';
 COMMENT ON COLUMN external_system_connection.credential_schema_version IS
     'Per-system credential format identifier, e.g. ''xero.oauth2.v1''. Lets the credential payload evolve without table churn.';
-COMMENT ON COLUMN external_system_connection.credential_payload_enc IS
-    'Encrypted credential blob. Shape determined by credential_schema_version.';
+COMMENT ON COLUMN external_system_connection.scopes IS 'OAuth scopes or equivalent permission set granted by the external system. Stored as space-delimited string.';
+COMMENT ON COLUMN external_system_connection.connected_at IS 'Timestamp when this connection was first established (initial OAuth grant or credential save).';
+COMMENT ON COLUMN external_system_connection.last_refreshed_at IS 'Timestamp of the most recent successful credential refresh (e.g. OAuth token refresh). NULL if never refreshed.';
 COMMENT ON COLUMN external_system_connection.disconnected_at IS
     'Set when status transitions away from active. Preserved on reconnect so the connection audit trail is complete.';
 
@@ -139,9 +157,14 @@ COMMENT ON TABLE export_watermark IS
     'Cursor-plus-date watermark per (tenant, external_system, entity_type). last_exported_source_id is the primary cursor — '
     'unambiguous when multiple records share a date. last_exported_transaction_date is stored alongside for UI narrative, '
     'gap-sweep bounding, and crosscheck redundancy. Updated atomically with the run terminal-state audit_log entry.';
+COMMENT ON COLUMN export_watermark.tenant_id IS 'Owning tenant. Part of the composite PK.';
+COMMENT ON COLUMN export_watermark.external_system_code IS 'FK to external_system(code). Identifies which peer system this watermark tracks. E.g. ''xero''.';
+COMMENT ON COLUMN export_watermark.entity_type IS 'Ledgius entity type this watermark covers. E.g. ''invoice'', ''bill'', ''credit_note'', ''account'', ''contact''.';
 COMMENT ON COLUMN export_watermark.last_exported_source_id IS
-    'Ledgius record id of the last successfully-exported entity for this (tenant, system, type). Primary cursor for the next run.';
+    'Ledgius record id of the last successfully-exported entity for this (tenant, system, type). Primary cursor for the next run — unambiguous when multiple records share a transaction date.';
 COMMENT ON COLUMN export_watermark.last_exported_transaction_date IS
     'Transaction date of the record named by last_exported_source_id. Derived but stored — bounds the gap-sweep query and drives the UI next-range preset without requiring a join to the entity table.';
+COMMENT ON COLUMN export_watermark.last_export_run_id IS
+    'UUID of the export_run that last advanced this watermark. Correlation key into export_run and audit_log.';
 COMMENT ON COLUMN export_watermark.last_advanced_at IS
-    'Server time this watermark row last advanced. Not the record''s own date.';
+    'Server time this watermark row last advanced. Not the record''s own date — distinct from last_exported_transaction_date.';

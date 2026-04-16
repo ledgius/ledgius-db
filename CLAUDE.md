@@ -28,7 +28,7 @@ reset-databases.sh   — Destroy and recreate volumes
 
 ### Script Completeness
 - Make scripts re-entrant where possible (`IF NOT EXISTS`, check constraints before creating)
-- For new columns: add `COMMENT ON ...` explaining the meaning/purpose with example data
+- **Every table, every column, and every index must have a `COMMENT ON ...` statement.** No exceptions. Table comments explain the table's role and invariants. Column comments explain meaning/purpose and include example data where appropriate. Index comments explain what query pattern the index supports.
 - Consider rollback implications
 - Evaluate indexing impact for new tables/columns
 

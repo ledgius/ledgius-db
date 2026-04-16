@@ -23,3 +23,16 @@ COMMENT ON COLUMN audit_log.metadata IS
     'Operation-specific context. Free-form JSONB per action; must include schema_version key. '
     'Used for import/export run summaries (counts, totals, date ranges), correlation ids into '
     'long-running operation tables, and other facts that do not belong in before_json/after_json.';
+
+-- Partial GIN index: only rows with metadata are indexed, so high-volume
+-- audit_log writes without metadata pay zero overhead. Covers support
+-- engineer queries like: metadata->>'external_system' = 'xero',
+-- metadata->>'schema_version' = 'export_watermark.v1', metadata @> '{"export_run_id":"..."}' etc.
+CREATE INDEX IF NOT EXISTS idx_audit_log_metadata
+    ON audit_log USING gin (metadata jsonb_path_ops)
+    WHERE metadata IS NOT NULL;
+
+COMMENT ON INDEX idx_audit_log_metadata IS
+    'Partial GIN index on audit_log.metadata for JSONB containment queries. Only covers rows where metadata IS NOT NULL — '
+    'most audit_log rows have no metadata, keeping the index small. Supports queries by external_system, schema_version, '
+    'export_run_id, and other metadata keys used by support and admin views.';
