@@ -4,22 +4,145 @@
 # These are the clients who book services. Each customer gets
 # a credit account in Accounts Receivable.
 #
-# Add or remove names freely — the seed tool handles the rest.
+# Add or remove entries freely — the seed tool handles the rest.
 # Customer codes are auto-generated as LG-CUST-001, LG-CUST-002, etc.
+#
+# V1.33 fields (email, phone, address) are loaded into the
+# contact + location + eca_to_location tables when the tenant-
+# side seed runner is implemented.
 
 customers:
-  - Sarah Mitchell
-  - Karen O'Brien
-  - Jessica Tran
-  - Emma Nguyen
-  - Rachel Wong
-  - Lisa Patel
-  - Amy Henderson
-  - Megan Taylor
-  - Sophie Clarke
-  - Hannah Davis
-  - Olivia Martinez
-  - Chloe Kim
-  - Natalie Brown
-  - Lauren Chen
-  - Jade Wilson
+  - name: Sarah Mitchell
+    email: sarah.mitchell@example.com.au
+    phone_mobile: "0410 111 001"
+    address:
+      line_one: 10 Bondi Junction Street
+      city: Bondi Junction
+      state: NSW
+      postcode: "2022"
+
+  - name: Karen O'Brien
+    email: karen.obrien@example.com.au
+    phone_mobile: "0411 222 002"
+    address:
+      line_one: 13 Mosman Street
+      city: Mosman
+      state: NSW
+      postcode: "2088"
+
+  - name: Jessica Tran
+    email: jessica.tran@example.com.au
+    phone_mobile: "0412 333 003"
+    address:
+      line_one: 16 Paddington Street
+      city: Paddington
+      state: NSW
+      postcode: "2021"
+
+  - name: Emma Nguyen
+    email: emma.nguyen@example.com.au
+    phone_mobile: "0413 444 004"
+    address:
+      line_one: 19 Neutral Bay Street
+      city: Neutral Bay
+      state: NSW
+      postcode: "2089"
+
+  - name: Rachel Wong
+    email: rachel.wong@example.com.au
+    phone_mobile: "0414 555 005"
+    address:
+      line_one: 22 Double Bay Street
+      city: Double Bay
+      state: NSW
+      postcode: "2028"
+
+  - name: Lisa Patel
+    email: lisa.patel@example.com.au
+    phone_mobile: "0415 666 006"
+    address:
+      line_one: 25 Chatswood Street
+      city: Chatswood
+      state: NSW
+      postcode: "2067"
+
+  - name: Amy Henderson
+    email: amy.henderson@example.com.au
+    phone_mobile: "0416 777 007"
+    address:
+      line_one: 28 Manly Street
+      city: Manly
+      state: NSW
+      postcode: "2095"
+
+  - name: Megan Taylor
+    email: megan.taylor@example.com.au
+    phone_mobile: "0417 888 008"
+    address:
+      line_one: 31 Surry Hills Street
+      city: Surry Hills
+      state: NSW
+      postcode: "2010"
+
+  - name: Sophie Clarke
+    email: sophie.clarke@example.com.au
+    phone_mobile: "0418 999 009"
+    address:
+      line_one: 34 Newtown Street
+      city: Newtown
+      state: NSW
+      postcode: "2042"
+
+  - name: Hannah Davis
+    email: hannah.davis@example.com.au
+    phone_mobile: "0419 000 010"
+    address:
+      line_one: 37 Balmain Street
+      city: Balmain
+      state: NSW
+      postcode: "2041"
+
+  - name: Olivia Martinez
+    email: olivia.martinez@example.com.au
+    phone_mobile: "0420 111 011"
+    address:
+      line_one: 40 Coogee Street
+      city: Coogee
+      state: NSW
+      postcode: "2034"
+
+  - name: Chloe Kim
+    email: chloe.kim@example.com.au
+    phone_mobile: "0421 222 012"
+    address:
+      line_one: 43 Marrickville Street
+      city: Marrickville
+      state: NSW
+      postcode: "2204"
+
+  - name: Natalie Brown
+    email: natalie.brown@example.com.au
+    phone_mobile: "0422 333 013"
+    address:
+      line_one: 46 Leichhardt Street
+      city: Leichhardt
+      state: NSW
+      postcode: "2040"
+
+  - name: Lauren Chen
+    email: lauren.chen@example.com.au
+    phone_mobile: "0423 444 014"
+    address:
+      line_one: 49 Randwick Street
+      city: Randwick
+      state: NSW
+      postcode: "2031"
+
+  - name: Jade Wilson
+    email: jade.wilson@example.com.au
+    phone_mobile: "0424 555 015"
+    address:
+      line_one: 52 Drummoyne Street
+      city: Drummoyne
+      state: NSW
+      postcode: "2047"
