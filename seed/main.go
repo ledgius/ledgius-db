@@ -74,6 +74,10 @@ func main() {
 		"Postgres DSN for ledgius_platform")
 	tenantDBName := flag.String("tenant-db-name", "ledgius",
 		"Tenant database name to register the seeded tenant against")
+	tenantDB := flag.String("tenant-db",
+		"host=localhost port=5436 user=ledgius password=ledgius_dev_password dbname=ledgius sslmode=disable",
+		"Postgres DSN for the tenant database (for seeding contacts, invoices, bills)")
+	skipTenant := flag.Bool("skip-tenant-data", false, "Skip tenant-side data seeding (contacts, invoices, bills)")
 	flag.Parse()
 
 	if *dataset == "" {
@@ -107,6 +111,12 @@ func main() {
 		if err := load(ctx, db, logger, dir, *dataset, *tenantDBName); err != nil {
 			logger.Error("load", "error", err)
 			os.Exit(1)
+		}
+		if !*skipTenant {
+			if err := seedTenant(ctx, *tenantDB, dir, logger); err != nil {
+				logger.Error("tenant seed", "error", err)
+				os.Exit(1)
+			}
 		}
 	case "unload":
 		if err := unload(ctx, db, logger, *dataset); err != nil {
