@@ -6,19 +6,58 @@
 #
 # The "code" field becomes the vendor's account number in the
 # system (prefixed with LG- automatically).
+#
+# V1.33 fields (email, phone, address) are loaded into the
+# contact + location + eca_to_location tables when the tenant-
+# side seed runner is implemented.
 
 vendors:
   - name: "Massage Warehouse Australia"
     code: "VEND-MW01"
+    email: "orders@massagewarehouse.com.au"
+    phone_office: "02 9876 5432"
+    address:
+      line_one: "Unit 12, 45 Industrial Ave"
+      city: Alexandria
+      state: NSW
+      postcode: "2015"
 
   - name: "Nail Supplies Direct"
     code: "VEND-NS01"
+    email: "sales@nailsuppliesdirect.com.au"
+    phone_office: "02 9555 1234"
+    address:
+      line_one: "3/78 Beauty Lane"
+      city: Mascot
+      state: NSW
+      postcode: "2020"
 
   - name: "ProClean Solutions"
     code: "VEND-PC01"
+    email: "accounts@proclean.com.au"
+    phone_office: "02 9333 9000"
+    address:
+      line_one: "Suite 5, 100 Botany Rd"
+      city: Waterloo
+      state: NSW
+      postcode: "2017"
 
   - name: "PrintHub Express"
     code: "VEND-PH01"
+    email: "billing@printhub.com.au"
+    phone_office: "02 9444 2222"
+    address:
+      line_one: "8 Print Court"
+      city: Artarmon
+      state: NSW
+      postcode: "2064"
 
   - name: "Social Boost Advertising"
     code: "VEND-SB01"
+    email: "invoices@socialboost.com.au"
+    phone_office: "02 9777 8888"
+    address:
+      line_one: "Level 3, 22 Marketing Pl"
+      city: North Sydney
+      state: NSW
+      postcode: "2060"
