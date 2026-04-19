@@ -20,8 +20,7 @@ CREATE INDEX IF NOT EXISTS idx_action_snooze_key
     ON action_snooze (action_key);
 
 CREATE INDEX IF NOT EXISTS idx_action_snooze_active
-    ON action_snooze (action_key, snoozed_until)
-    WHERE snoozed_until > now();
+    ON action_snooze (action_key, snoozed_until);
 
 COMMENT ON TABLE action_snooze IS
     'Snooze/acknowledge records for Books Overview action items. '
