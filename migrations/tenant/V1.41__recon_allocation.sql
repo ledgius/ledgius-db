@@ -3,7 +3,7 @@
 -- V1.41 — Reconciliation allocation + allocation lines + bank line status
 --
 -- Allocations link bank feed lines to GL entries. Split allocations
--- use multiple allocation_line rows. The bank_feed_line gains a
+-- use multiple allocation_line rows. The bank_transaction gains a
 -- recon_status field for the lifecycle state model.
 
 -- =============================================================================
@@ -12,7 +12,7 @@
 
 CREATE TABLE IF NOT EXISTS recon_allocation (
     id                  SERIAL PRIMARY KEY,
-    bank_feed_line_id   INT NOT NULL,
+    bank_transaction_id   INT NOT NULL,
     allocation_type     TEXT NOT NULL,
     rule_id             INT REFERENCES recon_rule(id),
     total_amount        NUMERIC NOT NULL,
@@ -48,7 +48,7 @@ BEGIN
 END $$;
 
 CREATE INDEX IF NOT EXISTS idx_recon_allocation_line
-    ON recon_allocation (bank_feed_line_id);
+    ON recon_allocation (bank_transaction_id);
 
 CREATE INDEX IF NOT EXISTS idx_recon_allocation_status
     ON recon_allocation (status);
@@ -86,24 +86,24 @@ COMMENT ON TABLE recon_allocation_line IS
 -- 3. Bank feed line recon_status
 -- =============================================================================
 
-ALTER TABLE bank_feed_line
+ALTER TABLE bank_transaction
     ADD COLUMN IF NOT EXISTS recon_status TEXT NOT NULL DEFAULT 'unmatched';
 
 DO $$
 BEGIN
     IF NOT EXISTS (
         SELECT 1 FROM information_schema.constraint_column_usage
-        WHERE table_name = 'bank_feed_line' AND constraint_name = 'bank_feed_line_recon_status_check'
+        WHERE table_name = 'bank_transaction' AND constraint_name = 'bank_transaction_recon_status_check'
     ) THEN
-        ALTER TABLE bank_feed_line
-            ADD CONSTRAINT bank_feed_line_recon_status_check
+        ALTER TABLE bank_transaction
+            ADD CONSTRAINT bank_transaction_recon_status_check
             CHECK (recon_status IN ('unmatched', 'suggested', 'allocated', 'approved', 'reversed'));
     END IF;
 END $$;
 
-CREATE INDEX IF NOT EXISTS idx_bank_feed_line_recon_status
-    ON bank_feed_line (recon_status);
+CREATE INDEX IF NOT EXISTS idx_bank_transaction_recon_status
+    ON bank_transaction (recon_status);
 
-COMMENT ON COLUMN bank_feed_line.recon_status IS
+COMMENT ON COLUMN bank_transaction.recon_status IS
     'Lifecycle state per REC-044: unmatched → suggested → allocated → approved → reversed. '
     'GL entries created at allocated, locked at approved.';

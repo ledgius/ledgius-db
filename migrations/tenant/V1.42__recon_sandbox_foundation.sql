@@ -3,7 +3,7 @@
 -- V1.42 — Reconciliation sandbox foundation
 --
 -- Introduces the two-field status model (allocation_method + workflow_status)
--- on bank_feed_line, extends recon_rule with priority/direction/amount matching,
+-- on bank_transaction, extends recon_rule with priority/direction/amount matching,
 -- and extends recon_allocation for the booking sandbox (propose → approve).
 -- GL entries are ONLY created at approval, never at propose.
 
@@ -11,7 +11,7 @@
 -- 1. Bank feed line: two-field lifecycle
 -- =============================================================================
 
-ALTER TABLE bank_feed_line
+ALTER TABLE bank_transaction
     ADD COLUMN IF NOT EXISTS allocation_method TEXT,
     ADD COLUMN IF NOT EXISTS workflow_status TEXT NOT NULL DEFAULT 'imported';
 
@@ -19,19 +19,19 @@ DO $$
 BEGIN
     IF NOT EXISTS (
         SELECT 1 FROM information_schema.constraint_column_usage
-        WHERE table_name = 'bank_feed_line' AND constraint_name = 'bank_feed_line_workflow_status_check'
+        WHERE table_name = 'bank_transaction' AND constraint_name = 'bank_transaction_workflow_status_check'
     ) THEN
-        ALTER TABLE bank_feed_line
-            ADD CONSTRAINT bank_feed_line_workflow_status_check
+        ALTER TABLE bank_transaction
+            ADD CONSTRAINT bank_transaction_workflow_status_check
             CHECK (workflow_status IN ('imported', 'unallocated', 'proposed', 'approved'));
     END IF;
 
     IF NOT EXISTS (
         SELECT 1 FROM information_schema.constraint_column_usage
-        WHERE table_name = 'bank_feed_line' AND constraint_name = 'bank_feed_line_allocation_method_check'
+        WHERE table_name = 'bank_transaction' AND constraint_name = 'bank_transaction_allocation_method_check'
     ) THEN
-        ALTER TABLE bank_feed_line
-            ADD CONSTRAINT bank_feed_line_allocation_method_check
+        ALTER TABLE bank_transaction
+            ADD CONSTRAINT bank_transaction_allocation_method_check
             CHECK (allocation_method IS NULL OR allocation_method IN (
                 'rule_match', 'manual_allocation', 'linked_auto', 'linked_manual',
                 'transfer', 'excluded', 'deferred'
@@ -39,16 +39,16 @@ BEGIN
     END IF;
 END $$;
 
-CREATE INDEX IF NOT EXISTS idx_bank_feed_line_workflow
-    ON bank_feed_line (workflow_status);
+CREATE INDEX IF NOT EXISTS idx_bank_transaction_workflow
+    ON bank_transaction (workflow_status);
 
-CREATE INDEX IF NOT EXISTS idx_bank_feed_line_method
-    ON bank_feed_line (allocation_method)
+CREATE INDEX IF NOT EXISTS idx_bank_transaction_method
+    ON bank_transaction (allocation_method)
     WHERE allocation_method IS NOT NULL;
 
-COMMENT ON COLUMN bank_feed_line.workflow_status IS
+COMMENT ON COLUMN bank_transaction.workflow_status IS
     'Lifecycle state: imported → unallocated (rules ran, no match) → proposed (allocation exists, no GL) → approved (GL committed).';
-COMMENT ON COLUMN bank_feed_line.allocation_method IS
+COMMENT ON COLUMN bank_transaction.allocation_method IS
     'How the line was resolved: rule_match, manual_allocation, linked_auto, linked_manual, transfer, excluded, deferred. NULL when unallocated/imported.';
 
 -- =============================================================================
@@ -100,7 +100,7 @@ COMMENT ON COLUMN recon_rule.amount_match_value IS 'Amount criteria: {"value": 1
 ALTER TABLE recon_allocation
     ADD COLUMN IF NOT EXISTS allocation_method TEXT,
     ADD COLUMN IF NOT EXISTS workflow_status TEXT NOT NULL DEFAULT 'proposed',
-    ADD COLUMN IF NOT EXISTS counterpart_bank_feed_line_id INT,
+    ADD COLUMN IF NOT EXISTS counterpart_bank_transaction_id INT,
     ADD COLUMN IF NOT EXISTS transfer_status TEXT;
 
 -- Migrate existing data: map old allocation_type to new allocation_method
@@ -148,12 +148,12 @@ END $$;
 
 -- Only one active allocation per bank feed line (REC-024d)
 CREATE UNIQUE INDEX IF NOT EXISTS idx_recon_allocation_active
-    ON recon_allocation (bank_feed_line_id)
+    ON recon_allocation (bank_transaction_id)
     WHERE workflow_status IN ('proposed', 'approved');
 
 COMMENT ON COLUMN recon_allocation.allocation_method IS 'How this allocation was created: rule_match, manual_allocation, linked_auto, linked_manual, transfer, excluded, deferred.';
 COMMENT ON COLUMN recon_allocation.workflow_status IS 'Sandbox lifecycle: proposed (no GL impact) → approved (GL entries created).';
-COMMENT ON COLUMN recon_allocation.counterpart_bank_feed_line_id IS 'For transfers: the paired bank feed line on the other account.';
+COMMENT ON COLUMN recon_allocation.counterpart_bank_transaction_id IS 'For transfers: the paired bank feed line on the other account.';
 COMMENT ON COLUMN recon_allocation.transfer_status IS 'Transfer state: pending_counterpart (one side only), matched (both sides found), approved.';
 
 -- =============================================================================
@@ -162,7 +162,7 @@ COMMENT ON COLUMN recon_allocation.transfer_status IS 'Transfer state: pending_c
 
 CREATE TABLE IF NOT EXISTS smart_recon_rejection (
     id                  SERIAL PRIMARY KEY,
-    bank_feed_line_id   INT NOT NULL,
+    bank_transaction_id   INT NOT NULL,
     rule_id             INT REFERENCES recon_rule(id),
     reason              TEXT NOT NULL,
     actor               TEXT NOT NULL,
