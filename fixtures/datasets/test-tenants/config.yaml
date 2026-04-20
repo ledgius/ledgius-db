@@ -1,0 +1,14 @@
+# ============================================================
+# Test Tenants — Seed Configuration
+# ============================================================
+# Spec references: R-0068 (PA-016, Seed Data).
+#
+# Optional seed dataset for development and testing.
+# Run:  make seed-load DATASET=test-tenants
+# Undo: make seed-unload DATASET=test-tenants
+#
+# This creates test tenants + users in ledgius_platform.
+# Tenant databases are NOT created — use the provisioning
+# pipeline or manual DB creation for that.
+
+business_name: "Test Tenants Collection"

@@ -1,0 +1,64 @@
+# ============================================================
+# Test Tenant Users
+# ============================================================
+# Spec references: R-0068 (PA-020 through PA-027, Seed Data).
+#
+# Platform owners (matt, ziryan) are seeded by V1.12 migration
+# and do NOT need to be here. This file seeds additional test
+# personas and tenant-specific users.
+#
+# Run:  make seed-load DATASET=test-tenants
+# Undo: make seed-unload DATASET=test-tenants
+
+users:
+  # --- Platform owners (additional login aliases) ---
+
+  - email: "matt+owner@ledgius.com"
+    display_name: "Matt Bush (Owner)"
+    password: "demo1234"
+    role: owner
+    platform_admin: true
+
+  - email: "matt+accountant@ledgius.com"
+    display_name: "Matt Bush (Accountant)"
+    password: "demo1234"
+    role: master_accountant
+    platform_admin: false
+
+  - email: "matt+tenant@ledgius.com"
+    display_name: "Matt Bush (Tenant)"
+    password: "demo1234"
+    role: owner
+    platform_admin: false
+
+  - email: "ziryan+owner@ledgius.com"
+    display_name: "Ziryan (Owner)"
+    password: "demo1234"
+    role: owner
+    platform_admin: true
+
+  - email: "ziryan+accountant@ledgius.com"
+    display_name: "Ziryan (Accountant)"
+    password: "demo1234"
+    role: master_accountant
+    platform_admin: false
+
+  - email: "ziryan+tenant@ledgius.com"
+    display_name: "Ziryan (Tenant)"
+    password: "demo1234"
+    role: owner
+    platform_admin: false
+
+  # --- Real tenant owners ---
+
+  - email: "lorna.wilson7@bigpond.com"
+    display_name: "Lorna Wilson"
+    password: "demo1234"
+    role: owner
+    platform_admin: false
+
+  - email: "maiyalbush@gmail.com"
+    display_name: "Mai Bush"
+    password: "demo1234"
+    role: owner
+    platform_admin: false

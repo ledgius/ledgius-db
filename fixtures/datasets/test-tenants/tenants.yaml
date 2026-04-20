@@ -1,0 +1,95 @@
+# ============================================================
+# Test and Real Tenants
+# ============================================================
+# Spec references: R-0068 (PA-010 through PA-016, Seed Data).
+#
+# Optional seed data. These tenants are registered in
+# ledgius_platform but their databases are NOT auto-created.
+# Each approved tenant needs:
+#   1. A PostgreSQL database named after the slug (e.g. test-farm)
+#   2. Flyway migrations applied to that database
+#   3. A data volume directory at /data/{slug}/ (tenants/{slug}/ locally)
+# Use the provisioning pipeline or manual creation for these.
+#
+# Run:  make seed-load DATASET=test-tenants
+
+# --- Test tenants (is_test = true, not billed) ---
+
+tenants:
+  - slug: "test-farm"
+    display_name: "Test Farm"
+    business_type: "Agriculture"
+    is_test: true
+    billing_state: "NSW"
+    users:
+      - email: "matt@ledgius.com"
+        role: owner
+      - email: "matt+accountant@ledgius.com"
+        role: master_accountant
+
+  - slug: "test-massage-nail"
+    display_name: "Test Massage & Nail"
+    business_type: "Health & Beauty"
+    is_test: true
+    billing_state: "VIC"
+    users:
+      - email: "maiyalbush@gmail.com"
+        role: owner
+      - email: "matt+accountant@ledgius.com"
+        role: master_accountant
+
+  - slug: "test-general"
+    display_name: "Test Business"
+    business_type: "General"
+    is_test: true
+    billing_state: "NSW"
+    users:
+      - email: "ziryan@ledgius.com"
+        role: owner
+      - email: "ziryan+accountant@ledgius.com"
+        role: master_accountant
+
+  - slug: "test-crestline-mowing"
+    display_name: "Test Crestline Mowing"
+    business_type: "Services"
+    is_test: true
+    billing_state: "NSW"
+    users:
+      - email: "matt@ledgius.com"
+        role: owner
+
+  # --- Real tenants (is_test = false, will be billed) ---
+
+  - slug: "topsy-farm"
+    display_name: "Topsy Farm"
+    business_type: "Agriculture"
+    is_test: false
+    billing_state: "NSW"
+    billing_city: "Crestline"
+    users:
+      - email: "lorna.wilson7@bigpond.com"
+        role: owner
+      - email: "matt+accountant@ledgius.com"
+        role: master_accountant
+
+  - slug: "crestline-mowing"
+    display_name: "Crestline Mowing"
+    business_type: "Services"
+    is_test: false
+    billing_state: "NSW"
+    billing_city: "Crestline"
+    users:
+      - email: "matt@ledgius.com"
+        role: owner
+
+  - slug: "maiya-nail-studio"
+    display_name: "Maiya Nail Studio"
+    business_type: "Health & Beauty"
+    is_test: false
+    billing_state: "VIC"
+    billing_city: "Melbourne"
+    users:
+      - email: "maiyalbush@gmail.com"
+        role: owner
+      - email: "matt+accountant@ledgius.com"
+        role: master_accountant
