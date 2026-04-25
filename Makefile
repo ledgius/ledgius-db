@@ -105,6 +105,23 @@ seed-unload: ## Remove the tenant + memberships created by seed-load (users reta
 	cd seed && go run . --dataset=$(DATASET) --action=unload \
 		--platform-db="host=$(DB_HOST) port=$(DB_PORT) user=$(DB_USER) password=$(DB_PASSWORD) dbname=$(PLATFORM_DB) sslmode=disable"
 
+# ── Tenant provisioning ──
+#
+# `seed-load` only registers tenants in the platform DB; it does not create
+# the per-tenant databases. `provision-tenants` reads the platform registry
+# and ensures every active tenant has a working DB with all migrations
+# applied (idempotent — skips tenants whose DB already exists).
+
+.PHONY: provision-tenants
+provision-tenants: ## Create tenant DBs + run migrations for every active tenant in $(PLATFORM_DB)
+	DB_HOST=$(DB_HOST) DB_PORT=$(DB_PORT) DB_USER=$(DB_USER) DB_PASSWORD=$(DB_PASSWORD) PLATFORM_DB=$(PLATFORM_DB) \
+		./scripts/provision-tenants.sh
+
+.PHONY: provision-tenants-dry
+provision-tenants-dry: ## Show what provision-tenants would do (no changes)
+	DB_HOST=$(DB_HOST) DB_PORT=$(DB_PORT) DB_USER=$(DB_USER) DB_PASSWORD=$(DB_PASSWORD) PLATFORM_DB=$(PLATFORM_DB) \
+		./scripts/provision-tenants.sh --dry-run
+
 # ── Help ──
 
 .PHONY: help
