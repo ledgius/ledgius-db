@@ -15,18 +15,16 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 
 ## Newly identified — needs fix before promotion
 
-- ❌ **Grace HIG salary $180,000/yr is BELOW the FY2025/26 high-income threshold $183,100** — Per FWA s333, the high-income threshold for FY2025/26 is $183,100 (varied annually). Grace's $180,000 guarantee fails the threshold qualification, meaning HIG status would NOT be recognised for her. Either:
-  - Increase Grace's guarantee to $183,100+ (or $190,000 to comfortably exceed) — cascade through her 52 pay rows + journal + bank + BAS + GL + reconciliation
-  - Or relabel Grace as "HIG-attempted-but-fails-threshold-qualification" and ensure the engine treats her as award-covered (not HIG-out)
-- ❌ **`employment_type` values violate live schema CHECK constraint** — file uses `full_time_annualised_wage`, `full_time_commission`, `full_time_high_income_guarantee`. `migrations/tenant/V1.08__payroll.sql:30` only allows `('full_time','part_time','casual','contractor')`. Three rows fail INSERT. Awaits the EmploymentPayArrangement entity per R-0073 / A-0046 (ledgius-specs#37) — until that lands, fixture rows for Amara/Nina/Grace cannot be inserted.
-- ❌ **`"salary"` literal in numeric Rate column** for Amara + Grace ordinary rows. Replace with NULL or a defensible numeric (e.g. the implied hourly: $1,730.77 / 38 = $45.55 for Amara, $3,461.54 / 38 = $91.09 for Grace).
+- ✅ **Grace HIG salary** RESOLVED 2026-04-27 — bumped from $180,000 to $190,000/yr (= $3,653.85/wk) to clear the FY2025/26 threshold $183,100 with comfortable buffer. Cascaded through 52 pay rows + journal + bank + BAS + GL + reconciliation. All 8 narrow validation checks PASS post-cascade.
+- ✅ **`employment_type` CHECK violation** RESOLVED 2026-04-27 — collapsed special types to `full_time` (CHECK-compliant); added `pay_arrangement_type` column carrying the variation (`ordinary` / `annualised_wage` / `commission` / `high_income_guarantee`). No DB migration required for the immediate fix; the EmploymentPayArrangement entity per R-0073 will eventually formalise this in the schema.
+- ✅ **`"salary"` literal in Rate column** RESOLVED 2026-04-27 — replaced with implied hourly: Amara $45.55, Grace $96.15 (post-HIG-cascade). 104 rows updated.
 
 ## Still outstanding (block promotion)
 
-- ❌ **`Hours × Rate ≠ Amount` rounding** — fixture-wide pattern; Amount back-derived from full-precision rates while Rate is printed at 2 dp.
+- ✅ **Hours × Rate ≠ Amount` rounding** RESOLVED 2026-04-27 — Rate to 4dp where needed; Hours × Rate now matches Amount.
 - ❌ **GL trial balance does not balance** — D vs C off by $399,431.12 (the largest of the three tenants). Same root cause: bank GL line + missing equity row.
-- ❌ **Leave balances literal `"fixture-cumulative"` strings**.
-- ❌ **STP `IncomeType=SalaryAndWages` / `EmploymentBasis=full_time` long-form** vs schema enum codes.
+- ✅ **Leave balances cumulative computation** RESOLVED 2026-04-27.
+- ✅ **STP enum codes** RESOLVED 2026-04-27 — substituted to ATO codes (SAW / F / P / C).
 - ❌ **PAYG against NAT 1004** — cross-tenant issue.
 
 ## Promotion checklist

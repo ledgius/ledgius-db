@@ -7,7 +7,7 @@ period_end: 2026-06-30
 timezone: Australia/Melbourne
 bank_account: '099999123453'
 opening_bank_balance: 50000.00
-closing_bank_balance: 442001.68
+closing_bank_balance: 430801.40
 pay_frequency: weekly
 gst_registered: true
 bas_frequency: quarterly

@@ -10,9 +10,9 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 
 ## Still outstanding (block promotion out of `-draft/`)
 
-- ❌ **`Hours × Rate ≠ Amount` rounding** — fixture-wide pattern. Olivia's monthly Amount $4,629.73 is back-derived from `weekly_rate × 52 / 12` at full precision; recomputing as `printed Rate × printed Hours = $28.12 × 164.67` produces $4,630.51 (a $0.78 discrepancy). Fix: either bump Rate to 4 dp or recompute Amount = `round(Hours × Rate, 2)` and accept the $0.78 deviation across the year.
+- ✅ **Hours × Rate ≠ Amount` rounding** RESOLVED 2026-04-27 — Rate column bumped to 4dp precision where the back-derivation creates discrepancy. `round(Hours × Rate, 2)` now matches Amount.
 - ❌ **GL trial balance does not balance** — D vs C off by $23,977.60. Same root cause as QA-06: `1000 Bank Operating Account` GL is computed as "closing bank − payroll outflows" rather than actual closing cash, and there's no equity / opening retained earnings row. Add a `Trial balance balances` row to `validation_checks.csv` so a regression here can't pass silently.
-- ❌ **Leave balances literal `"fixture-cumulative"` strings** in `payroll/leave_balances_expected.csv`. Either compute the cumulative balance per pay row from accrual rates or remove the columns. Today this file proves nothing the engine could be measured against.
+- ✅ **Leave balances cumulative computation** RESOLVED 2026-04-27 — running cumulative totals computed from accrual rates.
 - ❌ **STP `IncomeType=SalaryAndWages` / `EmploymentBasis=full_time` long-form values** vs schema enum codes (`SAW` / `F`, `P`, `C`) per `migrations/tenant/V1.28__stp_phase2.sql`. Fix: substitute long-form with ATO codes.
 - ❌ **PAYG values don't match standard NAT 1004 coefficients** — same as QA-06; tracked as fixture-wide issue.
 

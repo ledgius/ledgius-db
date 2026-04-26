@@ -1,5 +1,5 @@
-employee_id,display_name,worker_type,employment_type,award_code,award_name,classification,ordinary_hours_per_week,weekly_rate,hourly_rate,leave_accrues
-EMP-BEN-BUILDER,Ben Builder,employee,full_time,MA000020,Building and Construction General On-site Award 2020,CW/ECW 3,38,1068.40,28.12,True
-EMP-AMARA-ENGINEER,Amara Engineer,employee,full_time_annualised_wage,MA000065,Professional Employees Award 2020,Level 2 Experienced professional,38,1730.77,37.97,True
-EMP-NINA-SALES,Nina Sales Representative,employee,full_time_commission,MA000083,Commercial Sales Award 2020,Commercial Traveller / Advertising Sales Representative,38,1071.90,28.21,True
-EMP-GRACE-HIG,Grace High Income QA,employee,full_time_high_income_guarantee,MA000065,Professional Employees Award 2020,HIG candidate / professional comparator,38,3461.54,,True
+employee_id,display_name,worker_type,employment_type,pay_arrangement_type,award_code,award_name,classification,ordinary_hours_per_week,weekly_rate,hourly_rate,leave_accrues
+EMP-BEN-BUILDER,Ben Builder,employee,full_time,ordinary,MA000020,Building and Construction General On-site Award 2020,CW/ECW 3,38,1068.40,28.12,True
+EMP-AMARA-ENGINEER,Amara Engineer,employee,full_time,annualised_wage,MA000065,Professional Employees Award 2020,Level 2 Experienced professional,38,1730.77,37.97,True
+EMP-NINA-SALES,Nina Sales Representative,employee,full_time,commission,MA000083,Commercial Sales Award 2020,Commercial Traveller / Advertising Sales Representative,38,1071.90,28.21,True
+EMP-GRACE-HIG,Grace High Income QA,employee,full_time,high_income_guarantee,MA000065,Professional Employees Award 2020,HIG candidate / professional comparator,38,3653.85,,True
