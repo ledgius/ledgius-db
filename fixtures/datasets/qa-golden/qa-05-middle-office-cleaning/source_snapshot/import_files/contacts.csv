@@ -1,0 +1,8 @@
+Name,FirstName,LastName,EmailAddress,IsCustomer,IsSupplier,TaxNumber,POAddressLine1,POAddressLine2,POAddressCity,POAddressRegion,POAddressPostalCode,POAddressCountry
+Office Client A,,,accounts.office.client.a@example.test,TRUE,FALSE,11 111 111 111,1 QA Street,,Melbourne,VIC,3000,Australia
+Office Client B,,,accounts.office.client.b@example.test,TRUE,FALSE,11 111 111 111,1 QA Street,,Melbourne,VIC,3000,Australia
+Office Client C,,,accounts.office.client.c@example.test,TRUE,FALSE,11 111 111 111,1 QA Street,,Melbourne,VIC,3000,Australia
+Harbour Property Trust,,,accounts.harbour.property.trust@example.test,FALSE,TRUE,22 222 222 222,1 QA Street,,Melbourne,VIC,3000,Australia
+Cloud Software Vendors,,,accounts.cloud.software.vendors@example.test,FALSE,TRUE,22 222 222 222,1 QA Street,,Melbourne,VIC,3000,Australia
+Bank,,,accounts.bank@example.test,FALSE,TRUE,22 222 222 222,1 QA Street,,Melbourne,VIC,3000,Australia
+Delta IT Services Pty Ltd,,,accounts.delta.it.services.@example.test,FALSE,TRUE,22 222 222 222,1 QA Street,,Melbourne,VIC,3000,Australia

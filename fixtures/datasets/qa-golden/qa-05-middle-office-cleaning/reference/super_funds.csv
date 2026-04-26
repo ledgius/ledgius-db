@@ -1,0 +1,3 @@
+employee_id,fund_name,fund_abn,usi,member_number,product_name,is_default,notes
+EMP-OLIVIA-ADMIN,AustralianSuper,65 714 394 898,STA0100AU,SUPER-OLIVIA-001,AustralianSuper — Balanced,True,Tenant default fund
+EMP-CHARLIE-CLEANER,Hostplus,68 657 495 890,HOS0100AU,SUPER-CHARLIE-001,Hostplus — Balanced,False,Casual employee with own fund choice

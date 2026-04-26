@@ -1,0 +1,5 @@
+fwc_reference,base_award_comparators,operative_date,nominal_expiry,post_nominal_expiry_status,boot_passed_by,boot_passed_at,notes
+# Intentionally empty. None of the QA Golden tenants are on a registered
+# Enterprise Agreement. This file documents that absence so tests can
+# assert "Stage-2 layer composer falls through to award rule when no EBA
+# is declared" (per A-0046 §Runtime Architecture).

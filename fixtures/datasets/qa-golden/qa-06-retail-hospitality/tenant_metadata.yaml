@@ -1,0 +1,16 @@
+tenant_code: QA_TENANT_02
+tenant_name: QA-06 Retail Hospitality QA Pty Ltd
+business_context: Retail shop with attached cafe: retail award employees, hospitality part-time/casual employees, and a marketing contractor supplier with no award.
+financial_year: FY2026
+period_start: 2025-07-01
+period_end: 2026-06-30
+timezone: Australia/Melbourne
+bank_account: '099999123452'
+opening_bank_balance: 50000.00
+closing_bank_balance: 318676.71
+pay_frequency: weekly
+gst_registered: true
+bas_frequency: quarterly
+stp_enabled: true
+super_enabled: true
+super_guarantee_rate: 0.12

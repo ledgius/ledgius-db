@@ -1,0 +1,14 @@
+Account,DebitBalance,CreditBalance,NetDebitPositive
+1000 Bank Operating Account,151183.42,0.00,151183.42
+2200 GST Payable,0.00,52350.00,-52350.00
+2210 GST Receivable,12660.00,0.00,12660.00
+2300 PAYG Withholding Payable,0.00,0.00,0.00
+2310 Superannuation Payable,0.00,0.00,0.00
+2320 Net Wages Payable,0.00,0.00,0.00
+4000 Sales Revenue,0.00,523500.00,-523500.00
+5200 Monthly rent,93600.00,0.00,93600.00
+5220 Software subscriptions,11400.00,0.00,11400.00
+5250 Contractor supplier services,21600.00,0.00,21600.00
+5260 Monthly bank fee,420.00,0.00,420.00
+6000 Wages and Salaries Expense,149547.38,0.00,149547.38
+6010 Superannuation Expense,17945.91,0.00,17945.91

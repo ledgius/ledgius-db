@@ -1,0 +1,5 @@
+employee_id,fund_name,fund_abn,usi,member_number,product_name,is_default,notes
+EMP-BEN-BUILDER,Cbus Super,75 493 363 262,CBU0100AU,SUPER-BEN-001,Cbus — Growth (MySuper),True,Tenant default — construction industry fund
+EMP-AMARA-ENGINEER,UniSuper,91 385 943 850,UNI0001AU,SUPER-AMARA-001,UniSuper — Balanced,False,Professional employee — own fund choice
+EMP-NINA-SALES,AustralianSuper,65 714 394 898,STA0100AU,SUPER-NINA-001,AustralianSuper — Balanced,False,Sales employee — own fund choice
+EMP-GRACE-HIG,UniSuper,91 385 943 850,UNI0001AU,SUPER-GRACE-001,UniSuper — Balanced,False,HIG candidate — high-income individual fund

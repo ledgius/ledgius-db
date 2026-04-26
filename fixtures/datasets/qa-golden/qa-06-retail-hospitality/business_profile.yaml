@@ -1,0 +1,70 @@
+# QA-06 Retail Hospitality Pty Ltd — full tenant identity
+
+tenant_code: "QA_TENANT_02"
+slug: "qa-06-retail-hospitality"
+display_name: "QA-06 Retail Hospitality Pty Ltd"
+legal_name: "QA-06 Retail Hospitality Pty Ltd"
+
+abn: "53 100 000 006"
+acn: "100 000 006"
+business_number_type: "company"
+gst_registered: true
+gst_registration_date: "2020-01-01"
+bas_cadence: "quarterly"
+bas_basis: "accrual"
+trading_name: "Riley's Retail & Cafe"
+entity_class: 2
+
+primary_email: "ops@qa-06-retail-hosp.test.ledgius.com"
+primary_phone: "03 9000 0006"
+website: "https://qa-06-retail-hosp.test.ledgius.com"
+
+address:
+  line_one: "Shop 1, 200 Bourke Street"
+  line_two: ""
+  city: "Melbourne"
+  state: "VIC"
+  postcode: "3000"
+  country: "AU"
+
+default_bank_account:
+  name: "QA-06 Operating Account"
+  bsb: "099-999"
+  account_number: "099999123452"
+  bank_name: "QA Test Bank"
+  account_type: "operating"
+
+# Path 3 — admin-assisted with paid-offline arrangement (exercises a
+# different billing_mode than QA-05's beta and QA-07's paid_stripe).
+created_via: "admin_assisted"
+billing_mode: "paid_offline"
+billing_note: "QA fixture tenant — invoiced offline at $0/month for QA"
+plan: "qa_offline"
+signup_via_admin:
+  actor_email: "qa-admin@ledgius.com"
+  reason: "QA Golden Tenant — retail+hospitality coverage"
+  ticket_url: "https://github.com/ledgius/ledgius-specs/pull/38"
+  customer_category: "beta"
+  welcome_email_behaviour: "defer"
+
+owner_user:
+  email: "owner@qa-06-retail-hosp.test.ledgius.com"
+  display_name: "Riley Owner (QA-06 Retail/Hospitality)"
+
+default_super_fund:
+  name: "REST Super"
+  abn: "62 653 671 394"
+  usi: "RES0103AU"
+  product_name: "REST — Core Strategy"
+  contact_email: "employer@rest.com.au"
+
+branding:
+  primary_colour: "#cc6600"
+  logo_path: "branding/qa-06-logo.png"
+
+financial_year_end: "06-30"
+super_guarantee_rate: 0.12
+payroll_cadence: "weekly"
+stp_enabled: true
+stp_phase: 2
+payg_basis: "schedule_1_scale_2"
