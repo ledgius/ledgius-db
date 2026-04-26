@@ -1,5 +1,5 @@
 employee_id,display_name,worker_type,employment_type,award_code,award_name,classification,ordinary_hours_per_week,hourly_rate,leave_accrues
 EMP-RILEY-RETAIL-CASUAL,Riley Retail Casual,employee,casual,MA000004,General Retail Industry Award 2020,Retail Employee Level 1,0,33.19,False
-EMP-PRIYA-RETAIL-SUP,Priya Retail Supervisor,employee,full_time,MA000004,General Retail Industry Award 2020,Retail Employee Level 4,38,31.64,True
+EMP-PRIYA-RETAIL-SUP,Priya Retail Supervisor,employee,full_time,MA000004,General Retail Industry Award 2020,Retail Employee Level 4,38,28.12,True
 EMP-HANA-CAFE-PARTTIME,Hana Cafe Part-time,employee,part_time,MA000009,Hospitality Industry (General) Award 2020,Level 2,20,25.85,True
 EMP-MARCO-HOSP-CASUAL,Marco Hospitality Casual,employee,casual,MA000009,Hospitality Industry (General) Award 2020,Level 2,0,32.31,False
