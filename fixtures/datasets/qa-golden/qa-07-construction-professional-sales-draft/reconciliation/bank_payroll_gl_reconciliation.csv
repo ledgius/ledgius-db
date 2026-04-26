@@ -1,9 +1,10 @@
 Check,Expected,Actual,Status
 Bank payroll debits equal payroll bank journal credits,460608.60,460608.60,PASS
-Net wage bank rows equal expected net wages,313723.12,313723.12,PASS
-PAYG bank rows equal expected PAYG withholding,97555.12,97555.12,PASS
+Net wage bank rows equal expected net wages,302640.24,302640.24,PASS
+PAYG bank rows equal expected PAYG withholding,108638.00,108638.00,PASS
 Super bank rows equal expected SG liability,49330.36,49330.36,PASS
 Wages payable closes to zero,0.00,0.00,PASS
 PAYG payable closes to zero in this fixture,0.00,0.00,PASS
 Super payable closes to zero in this fixture,0.00,0.00,PASS
 Bank closing balance equals final running balance,430801.40,430801.40,PASS
+Trial balance balances (DR equals CR),0.00,0.00,PASS

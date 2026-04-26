@@ -12,11 +12,11 @@ Draft / WIP fixtures — see [README.md](../README.md) for the broader two-layer
 ## Still outstanding (block promotion out of `-draft/`)
 
 - ❌ **`Hours × Rate ≠ Amount` rounding** — fixture-wide pattern; Amount is back-derived from full-precision rates while Rate is printed at 2 dp. Fix: either bump Rate to 4 dp or recompute `Amount = round(Hours × Rate, 2)`. Affects every pay-item row.
-- ❌ **GL trial balance does not balance — D vs C off by $117,493.29** (pre-Priya cascade; will shift with new totals but the structural imbalance remains). The `1000 Bank Operating Account` GL is computed as "closing bank − payroll outflows" rather than the actual closing cash, and there is no equity / opening retained earnings row. Need an opening RE row + a corrected bank GL line. Add a `Trial balance balances` row to `validation_checks.csv` so a regression here can't pass silently.
+- ✅ **GL trial balance** RESOLVED 2026-04-27 — bank GL line corrected to actual closing cash $326,466.83, and `3000 Owner's Capital` $50,000 CR row added (opening cash equity). DR = CR = $625,850.00. New `Trial balance balances (DR equals CR)` row added to `validation_checks.csv`.
 - ✅ **Leave balances cumulative computation** RESOLVED 2026-04-27 — `ClosingAnnualLeaveHours` and `ClosingPersonalLeaveHours` now hold proper running cumulative totals. FT employees end FY at ≈152h annual + ≈76h personal (matches NES); PT pro-rata; casuals stay 0.
 - ❌ **`employees.csv` schema differs from QA-05/QA-07** — this file's header has `hourly_rate, leave_accrues` only; the others have `weekly_rate, hourly_rate, leave_accrues`. A typed importer can't load all three without per-tenant branching. Pick one canonical schema (per-row pay-basis differences are data, not file shape).
 - ✅ **STP enum codes** RESOLVED 2026-04-27 — `SalaryAndWages` → `SAW`, `full_time` → `F`, `part_time` → `P`, `casual` → `C` across all stp_phase2_expected.csv rows. QA-07 special types (full_time_annualised_wage / commission / high_income_guarantee) all map to `F` per ATO Phase 2 enum.
-- ❌ **PAYG values don't match standard NAT 1004 coefficients** — the fixture claims to use ATO Schedule 1 Scale 2, but the per-row PAYG amounts back-derive to coefficients that aren't from any published schedule. The 2026-04-26 cascade preserved the existing effective-tax-rate (proportional scaling for Priya's adjusted gross), but the underlying PAYG numbers across all employees should be recomputed against the actual FY2025/26 NAT 1004 schedule for ATO compliance.
+- ✅ **PAYG against NAT 1004 FY2025/26** RESOLVED 2026-04-27 — recomputed every weekly pay using NAT 1004 Scale 2 (TFN, tax-free threshold claimed): tax_basis = floor(weekly_gross) + 0.99, then `a × basis − b`, then round to whole dollar. Annual PAYG total: $16,081.00 (was $16,064.72). Cascaded through pay_runs + STP + journal + bank + BAS quarterly. Bank closing preserved at $326,466.83. All 9 validation checks PASS.
 
 ## Promotion checklist
 
@@ -24,11 +24,11 @@ Draft / WIP fixtures — see [README.md](../README.md) for the broader two-layer
 - [x] Priya rate correctness (newly identified during FWC verification) → fixed
 - [x] `docs/award_sources.md` fleshed out → done
 - [ ] Hours × Rate rounding (#5)
-- [ ] GL trial balance fix (#6) + add Trial-balance-balances validation row
+- [x] GL trial balance fix (#6) + add Trial-balance-balances validation row
 - [ ] Leave balances proper cumulative computation (#7)
 - [ ] Schema unified across the 3 tenants
 - [ ] STP enum mismatch (#9)
-- [ ] PAYG against NAT 1004 (FY2025/26)
+- [x] PAYG against NAT 1004 (FY2025/26)
 - [ ] Engine has matching rules in `pkg/rules/bundles/au/payroll/MA000004_*` + `MA000009_*` per R-0073
 - [ ] QA data loader successfully imports against freshly-provisioned tenant DB (already verified for non-payroll Xero entities — see ledgius-api PR #79)
 - [ ] Engine-vs-fixture diff test passes

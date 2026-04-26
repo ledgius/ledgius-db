@@ -11,10 +11,10 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 ## Still outstanding (block promotion out of `-draft/`)
 
 - ✅ **Hours × Rate ≠ Amount` rounding** RESOLVED 2026-04-27 — Rate column bumped to 4dp precision where the back-derivation creates discrepancy. `round(Hours × Rate, 2)` now matches Amount.
-- ❌ **GL trial balance does not balance** — D vs C off by $23,977.60. Same root cause as QA-06: `1000 Bank Operating Account` GL is computed as "closing bank − payroll outflows" rather than actual closing cash, and there's no equity / opening retained earnings row. Add a `Trial balance balances` row to `validation_checks.csv` so a regression here can't pass silently.
+- ✅ **GL trial balance** RESOLVED 2026-04-27 — bank GL line corrected to actual closing cash $154,792.40, and `3000 Owner's Capital` $50,000 CR row added (opening cash equity). DR = CR = $309,050.00. New `Trial balance balances (DR equals CR)` row added to `validation_checks.csv`.
 - ✅ **Leave balances cumulative computation** RESOLVED 2026-04-27 — running cumulative totals computed from accrual rates.
 - ❌ **STP `IncomeType=SalaryAndWages` / `EmploymentBasis=full_time` long-form values** vs schema enum codes (`SAW` / `F`, `P`, `C`) per `migrations/tenant/V1.28__stp_phase2.sql`. Fix: substitute long-form with ATO codes.
-- ❌ **PAYG values don't match standard NAT 1004 coefficients** — same as QA-06; tracked as fixture-wide issue.
+- ✅ **PAYG against NAT 1004 FY2025/26** RESOLVED 2026-04-27 — recomputed every monthly pay using NAT 1006 method (gross × 3/13 → weekly equiv → tax_basis = floor + 0.99 → a × basis − b → round to dollar → × 13/3 → cents). Annual PAYG total: $9,048.00 (was $8,532.00). Cascaded through pay_runs + STP + journal + bank + BAS quarterly. Bank closing preserved (gross+super constant). All 9 validation checks PASS.
 
 ## Promotion checklist
 
@@ -22,10 +22,10 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 - [x] AuthorityRefs replaced with real clause references
 - [x] `docs/award_sources.md` fleshed out with proper provenance
 - [ ] Hours × Rate rounding
-- [ ] GL trial balance fix + add Trial-balance-balances validation row
+- [x] GL trial balance fix + add Trial-balance-balances validation row
 - [ ] Leave balances proper cumulative computation
 - [ ] STP enum mismatch
-- [ ] PAYG against NAT 1004 (FY2025/26)
+- [x] PAYG against NAT 1004 (FY2025/26)
 - [ ] Engine has matching rules in `pkg/rules/bundles/au/payroll/MA000002_*` + `MA000022_*` per R-0073
 - [ ] QA data loader successfully imports against freshly-provisioned tenant DB (already verified for non-payroll Xero entities)
 - [ ] Engine-vs-fixture diff test passes

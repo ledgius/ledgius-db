@@ -22,10 +22,10 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 ## Still outstanding (block promotion)
 
 - ✅ **Hours × Rate ≠ Amount` rounding** RESOLVED 2026-04-27 — Rate to 4dp where needed; Hours × Rate now matches Amount.
-- ❌ **GL trial balance does not balance** — D vs C off by $399,431.12 (the largest of the three tenants). Same root cause: bank GL line + missing equity row.
+- ✅ **GL trial balance** RESOLVED 2026-04-27 — bank GL line corrected to actual closing cash $430,801.40 (was an inverted -18,629.72 net-credit value), and `3000 Owner's Capital` $50,000 CR row added (opening cash equity). DR = CR = $1,074,650.00. New `Trial balance balances (DR equals CR)` row added to `validation_checks.csv`.
 - ✅ **Leave balances cumulative computation** RESOLVED 2026-04-27.
 - ✅ **STP enum codes** RESOLVED 2026-04-27 — substituted to ATO codes (SAW / F / P / C).
-- ❌ **PAYG against NAT 1004** — cross-tenant issue.
+- ✅ **PAYG against NAT 1004 FY2025/26** RESOLVED 2026-04-27 — recomputed every weekly pay using NAT 1004 Scale 2 coefficients. Annual PAYG total: $108,638.00 (was $97,555.12). Cascaded through pay_runs + STP + journal + bank + BAS quarterly. Bank closing preserved at $430,801.40. Grace's HIG salary correctly hits the top bracket ($3,461+ a=0.4700, b=512.8846) → $1,204/week PAYG. All 9 validation checks PASS.
 
 ## Promotion checklist
 
@@ -38,10 +38,10 @@ Draft / WIP fixtures — see [README.md](../README.md). Issues identified by rev
 - [ ] `employment_type` schema-aligned (awaits EmploymentPayArrangement entity)
 - [ ] `"salary"` literal replaced in Rate column
 - [ ] Hours × Rate rounding (cross-tenant)
-- [ ] GL trial balance fix (cross-tenant)
+- [x] GL trial balance fix (cross-tenant)
 - [ ] Leave balances proper computation (cross-tenant)
 - [ ] STP enum mismatch (cross-tenant)
-- [ ] PAYG against NAT 1004 (cross-tenant)
+- [x] PAYG against NAT 1004 (cross-tenant)
 - [ ] Engine has matching rules in `pkg/rules/bundles/au/payroll/MA000020_*` + `MA000065_*` + `MA000083_*` per R-0073
 - [ ] HIG / annualised-wage / variable-pay engine paths shipped per R-0073 + supporting migrations
 - [ ] QA data loader successfully imports against freshly-provisioned tenant DB (already verified for non-payroll Xero entities — see ledgius-api PR #79)
