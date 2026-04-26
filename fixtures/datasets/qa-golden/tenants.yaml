@@ -1,0 +1,57 @@
+# QA Golden Tenant Dataset — Tenant Registry
+#
+# Three QA tenants whose per-tenant fixtures (CSVs + YAML) sit under the
+# matching slug subdirectory. Loaded into ledgius_platform.tenants by
+# `make seed-load DATASET=qa-golden`.
+#
+# Each tenant is `is_test = true` (not billed) and has its full identity
+# in the per-tenant subdirectory's business_profile.yaml — see
+# qa-XX-...-/business_profile.yaml for ABN, address, plan, billing mode,
+# bank details, super-fund defaults, etc.
+#
+# Slug rules: lowercase, hyphenated, ≤63 chars (Postgres DB-name limit).
+# The slug doubles as the tenant DB name when `make provision-tenants`
+# runs against this dataset.
+
+tenants:
+  - slug: "qa-05-middle-office-cleaning"
+    display_name: "QA-05 Middle Office Cleaning Pty Ltd"
+    business_type: "Professional Services & Cleaning"
+    is_test: true
+    billing_state: "VIC"
+    billing_city: "Melbourne"
+    users:
+      - email: "owner@qa-05-cleaning.test.ledgius.com"
+        role: owner
+      - email: "qa-admin@ledgius.com"
+        role: owner
+      - email: "accountant@qa-golden.test.ledgius.com"
+        role: accountant
+
+  - slug: "qa-06-retail-hospitality"
+    display_name: "QA-06 Retail Hospitality Pty Ltd"
+    business_type: "Retail & Hospitality"
+    is_test: true
+    billing_state: "VIC"
+    billing_city: "Melbourne"
+    users:
+      - email: "owner@qa-06-retail-hosp.test.ledgius.com"
+        role: owner
+      - email: "qa-admin@ledgius.com"
+        role: owner
+      - email: "accountant@qa-golden.test.ledgius.com"
+        role: accountant
+
+  - slug: "qa-07-construction-professional-sales"
+    display_name: "QA-07 Construction Professional Sales Pty Ltd"
+    business_type: "Construction & Professional Services"
+    is_test: true
+    billing_state: "VIC"
+    billing_city: "Melbourne"
+    users:
+      - email: "owner@qa-07-construction.test.ledgius.com"
+        role: owner
+      - email: "qa-admin@ledgius.com"
+        role: owner
+      - email: "accountant@qa-golden.test.ledgius.com"
+        role: accountant

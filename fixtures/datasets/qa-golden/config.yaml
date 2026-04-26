@@ -1,0 +1,25 @@
+# QA Golden Tenant Dataset — FY2025/26
+#
+# Three QA tenants engineered to exercise the full breadth of Ledgius
+# accounting + payroll behaviour against known-correct expected outputs.
+#
+# Two purposes:
+#   1. Manual interactive seed data — tenant accounts pre-populated so
+#      humans can click through real-looking-data scenarios.
+#   2. Unit-test source-of-truth — every CEL formula, OPA Rego policy,
+#      and go-rules decision-table outcome is asserted against the
+#      pay_runs_expected / pay_items_expected / super / STP / leave /
+#      payroll_journal / GL-balances / BAS-quarterly / reconciliation
+#      CSVs in each tenant.
+#
+# Run:  make seed-load DATASET=qa-golden
+#
+# See README.md (dataset root) for full content, identity, and test-
+# mapping details.
+
+dataset_name: "qa-golden"
+description: "QA Golden Tenants — comprehensive ATO/payroll compliance fixture for FY2025/26"
+financial_year: "FY2026"
+period_start: "2025-07-01"
+period_end: "2026-06-30"
+timezone: "Australia/Melbourne"

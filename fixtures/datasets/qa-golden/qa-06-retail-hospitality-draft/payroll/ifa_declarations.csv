@@ -1,0 +1,5 @@
+employee_id,underlying_instrument_type,signed_date,varied_clauses,boot_passing_declaration,terminated_date,termination_notice_period_days,notes
+# Intentionally empty. None of the QA Golden employees have an Individual
+# Flexibility Arrangement (IFA). This file documents that absence so the
+# resolver tests can assert IFA layer is correctly skipped when no IFA
+# applies.

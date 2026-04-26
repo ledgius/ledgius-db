@@ -1,0 +1,13 @@
+Type,Status,ContactName,InvoiceNumber,Reference,InvoiceDate,DueDate,Currency,LineDescription,Quantity,UnitAmount,AccountCode,TaxType,InventoryItemCode
+ACCREC,AUTHORISED,Retail Client B,INV-001,REF-INV-001,04/07/2025,18/07/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 001,1,42250.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client C,INV-002,REF-INV-002,04/08/2025,18/08/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 002,1,42500.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client A,INV-003,REF-INV-003,04/09/2025,18/09/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 003,1,42750.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client B,INV-004,REF-INV-004,04/10/2025,18/10/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 004,1,43000.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client C,INV-005,REF-INV-005,04/11/2025,18/11/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 005,1,43250.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client A,INV-006,REF-INV-006,04/12/2025,18/12/2025,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 006,1,43500.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client B,INV-007,REF-INV-007,04/01/2026,18/01/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 007,1,43750.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client C,INV-008,REF-INV-008,04/02/2026,18/02/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 008,1,44000.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client A,INV-009,REF-INV-009,04/03/2026,18/03/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 009,1,44250.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client B,INV-010,REF-INV-010,04/04/2026,18/04/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 010,1,44500.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client C,INV-011,REF-INV-011,04/05/2026,18/05/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 011,1,44750.00,4000,GST on Income,
+ACCREC,AUTHORISED,Retail Client A,INV-012,REF-INV-012,04/06/2026,18/06/2026,AUD,QA-06 Retail Hospitality QA Pty Ltd monthly sales invoice 012,1,45000.00,4000,GST on Income,

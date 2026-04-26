@@ -1,0 +1,5 @@
+employee_id,fund_name,fund_abn,usi,member_number,product_name,is_default,notes
+EMP-RILEY-RETAIL-CASUAL,REST Super,62 653 671 394,RES0103AU,SUPER-RILEY-001,REST — Core Strategy,True,Tenant default fund
+EMP-PRIYA-RETAIL-SUP,REST Super,62 653 671 394,RES0103AU,SUPER-PRIYA-001,REST — Core Strategy,True,
+EMP-HANA-CAFE-PARTTIME,Hostplus,68 657 495 890,HOS0100AU,SUPER-HANA-001,Hostplus — Balanced,False,Hospitality default fund
+EMP-MARCO-HOSP-CASUAL,Hostplus,68 657 495 890,HOS0100AU,SUPER-MARCO-001,Hostplus — Balanced,False,

@@ -1,0 +1,46 @@
+# QA Golden Tenant Dataset — Users
+#
+# One owner per tenant (so each tenant is realistically self-contained for
+# manual-testing scenarios) + a shared QA platform admin who has owner-
+# membership on all three (so unit tests can drive multi-tenant scenarios
+# from a single login).
+#
+# Passwords are dev-only. Users are seeded with bcrypt-hashed passwords
+# by ledgius-db/seed/main.go.
+
+users:
+  # ── Per-tenant owners ──
+
+  - email: "owner@qa-05-cleaning.test.ledgius.com"
+    display_name: "Olivia Owner (QA-05 Cleaning)"
+    password: "qaqa1234"
+    role: owner
+    platform_admin: false
+
+  - email: "owner@qa-06-retail-hosp.test.ledgius.com"
+    display_name: "Riley Owner (QA-06 Retail/Hospitality)"
+    password: "qaqa1234"
+    role: owner
+    platform_admin: false
+
+  - email: "owner@qa-07-construction.test.ledgius.com"
+    display_name: "Ben Owner (QA-07 Construction)"
+    password: "qaqa1234"
+    role: owner
+    platform_admin: false
+
+  # ── Shared QA admin ──
+
+  - email: "qa-admin@ledgius.com"
+    display_name: "QA Test Admin"
+    password: "qaqa1234"
+    role: master_accountant
+    platform_admin: false
+
+  # ── Per-tenant accountant (for segregation-of-duties test paths) ──
+
+  - email: "accountant@qa-golden.test.ledgius.com"
+    display_name: "QA Test Accountant"
+    password: "qaqa1234"
+    role: accountant
+    platform_admin: false

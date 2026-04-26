@@ -1,0 +1,83 @@
+# QA-05 Middle Office Cleaning Pty Ltd — full tenant identity
+#
+# Extends tenant_metadata.yaml (period + bank settings + GST/STP/super
+# config) with the identity layer needed for assisted-tenant-create
+# (Path 3 per R-0074), help-panel context, payslip + invoice rendering,
+# and ATO/STP submission.
+
+tenant_code: "QA_TENANT_01"
+slug: "qa-05-middle-office-cleaning"
+display_name: "QA-05 Middle Office Cleaning Pty Ltd"
+legal_name: "QA-05 Middle Office Cleaning Pty Ltd"
+
+# ── Australian Business Identity ──
+abn: "53 100 000 005"      # Test ABN — algorithm-valid sequence reserved for QA
+acn: "100 000 005"
+business_number_type: "company"
+gst_registered: true
+gst_registration_date: "2020-01-01"
+bas_cadence: "quarterly"
+bas_basis: "accrual"
+trading_name: "Middle Office Cleaning"
+entity_class: 2            # Pty Ltd
+
+# ── Contact ──
+primary_email: "ops@qa-05-cleaning.test.ledgius.com"
+primary_phone: "03 9000 0005"
+website: "https://qa-05-cleaning.test.ledgius.com"
+
+# ── Postal address ──
+address:
+  line_one: "Level 5, 100 Queen Street"
+  line_two: ""
+  city: "Melbourne"
+  state: "VIC"
+  postcode: "3000"
+  country: "AU"
+
+# ── Banking ──
+default_bank_account:
+  name: "QA-05 Operating Account"
+  bsb: "099-999"
+  account_number: "099999123451"
+  bank_name: "QA Test Bank"
+  account_type: "operating"
+
+# ── Onboarding provenance (Path 3 — admin-assisted per R-0074) ──
+created_via: "admin_assisted"
+billing_mode: "beta"
+billing_note: "QA fixture tenant — beta/comp account, never charged"
+plan: "qa_comp"
+signup_via_admin:
+  actor_email: "qa-admin@ledgius.com"
+  reason: "QA Golden Tenant — automated test fixture"
+  ticket_url: "https://github.com/ledgius/ledgius-specs/pull/38"
+  customer_category: "beta"
+  welcome_email_behaviour: "defer"
+
+# ── Owner user ──
+owner_user:
+  email: "owner@qa-05-cleaning.test.ledgius.com"
+  display_name: "Olivia Owner (QA-05 Cleaning)"
+
+# ── Default super fund (employees in employees.csv may override) ──
+default_super_fund:
+  name: "AustralianSuper"
+  abn: "65 714 394 898"
+  usi: "STA0100AU"
+  product_name: "AustralianSuper — Balanced"
+  contact_email: "employer@australiansuper.com"
+
+# ── Branding ──
+branding:
+  primary_colour: "#0066cc"
+  logo_path: "branding/qa-05-logo.png"   # Optional — not required for tests
+
+# ── Tax + payroll defaults (mirror tenant_metadata.yaml; kept here for the
+#    full identity record needed by Path 3 onboarding) ──
+financial_year_end: "06-30"
+super_guarantee_rate: 0.12
+payroll_cadence: "monthly"
+stp_enabled: true
+stp_phase: 2
+payg_basis: "schedule_1_scale_2"
