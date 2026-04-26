@@ -1,0 +1,6 @@
+Code,Name,Type,TaxType,Description,EnablePaymentsToAccount,ShowInExpenseClaims,Balance
+4000,Sales Revenue,REVENUE,GST on Income,Sales revenue from monthly invoicing,No,No,0
+5200,Rent Expense,EXPENSE,GST on Expenses,Monthly office/shop rent,No,No,0
+5220,Software Subscriptions,EXPENSE,GST on Expenses,Cloud software / SaaS subscriptions,No,No,0
+5250,Contractor Services,EXPENSE,GST on Expenses,Contractor supplier services (no payroll),No,No,0
+5260,Bank Fees,EXPENSE,BAS Excluded,Monthly bank fees,No,No,0
