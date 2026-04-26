@@ -1,33 +1,31 @@
 # QA-05 Middle Office Cleaning — known issues (draft fixture)
 
-These per-tenant CSVs are **draft / work-in-progress fixtures**. They are not loaded by `make seed-load` and they are not yet engine-truth. Issues identified by review on PR ledgius-db#36 — must be resolved before promoting these out of `-draft/`.
+Draft / WIP fixtures — see [README.md](../README.md). Issues identified by review on PR ledgius-db#36, with progress tracked here.
 
-## Fixture-side bugs (block promotion)
+## Resolved 2026-04-26
 
-1. **Hours × Rate ≠ Amount throughout** — e.g. row 2 of `payroll/pay_items_expected.csv`: Hours=164.67, Rate=28.12, Amount=4,629.73, but 164.67 × 28.12 = 4,630.51. Amount is back-derived from `weekly_rate × 52 / 12` at full precision while Rate is printed at 2 dp. **Fix:** either match Amount to printed Rate × Hours, or print Rate at 4 dp, or stop publishing Hours/Rate when the source of truth is the salary.
+- ✅ **Penalty-rate values verified against FWC PDFs** — `MA000002` (Clerks Private Sector) and `MA000022` (PR786560 ppc 01Jul25, Cleaning Services). All Charlie's casual penalty dollar amounts ($32.31 / $45.24 / $71.09) check out against MA000022 Table 7 column 4. Olivia's $28.12 ordinary rate matches MA000002 Table 3 Level 2 Year 1.
+- ✅ **AuthorityRefs replaced with real FWC clause references** — every pay-item row in `pay_items_expected.csv` now cites `MA000002:cl.16.1-Table3-...` or `MA000022:cl.20.2-Table7-...` patterns instead of bespoke labels.
+- ✅ **`docs/award_sources.md` rewritten** with full clause-level provenance, FWC publication URLs, variation-determination references (PR786560 confirmed for MA000022; MA000002 PR ref noted as in-PDF history), per-rate verification tables, and NES references for Olivia's leave accruals.
 
-2. **MA000022 cleaning Saturday penalty rate not traced to FWC clause** — `AuthorityRefs` strings (e.g. `MA000022:CSE1-casual-saturday-rate`) are bespoke labels with no mapping to actual FWC clause numbers. Verify Charlie's Saturday/PH rates against the live MA000022 instrument and replace with `MA000022:cl.<N>` references.
+## Still outstanding (block promotion out of `-draft/`)
 
-3. **Leave balances column literal "fixture-cumulative"** — `payroll/leave_balances_expected.csv` has the string `fixture-cumulative` in `ClosingAnnualLeaveHours` / `ClosingPersonalLeaveHours` for every row. Either compute the cumulative balance per pay (the actual asserted behaviour) or remove the columns. Today the file proves nothing the engine could be measured against.
+- ❌ **`Hours × Rate ≠ Amount` rounding** — fixture-wide pattern. Olivia's monthly Amount $4,629.73 is back-derived from `weekly_rate × 52 / 12` at full precision; recomputing as `printed Rate × printed Hours = $28.12 × 164.67` produces $4,630.51 (a $0.78 discrepancy). Fix: either bump Rate to 4 dp or recompute Amount = `round(Hours × Rate, 2)` and accept the $0.78 deviation across the year.
+- ❌ **GL trial balance does not balance** — D vs C off by $23,977.60. Same root cause as QA-06: `1000 Bank Operating Account` GL is computed as "closing bank − payroll outflows" rather than actual closing cash, and there's no equity / opening retained earnings row. Add a `Trial balance balances` row to `validation_checks.csv` so a regression here can't pass silently.
+- ❌ **Leave balances literal `"fixture-cumulative"` strings** in `payroll/leave_balances_expected.csv`. Either compute the cumulative balance per pay row from accrual rates or remove the columns. Today this file proves nothing the engine could be measured against.
+- ❌ **STP `IncomeType=SalaryAndWages` / `EmploymentBasis=full_time` long-form values** vs schema enum codes (`SAW` / `F`, `P`, `C`) per `migrations/tenant/V1.28__stp_phase2.sql`. Fix: substitute long-form with ATO codes.
+- ❌ **PAYG values don't match standard NAT 1004 coefficients** — same as QA-06; tracked as fixture-wide issue.
 
-4. **GL trial balance does not balance** — D=$235,072.40, C=$259,050.00, off by $23,977.60. The bank line in `accounting/general_ledger_expected_balances.csv` is computed as "closing bank − payroll outflows" (not actual closing cash); no equity / opening retained earnings row. Add a `Trial balance balances` check row to `reference/validation_checks.csv` so this cannot regress unnoticed.
+## Promotion checklist
 
-## Schema-side gaps (resolve when targeted at the live schema)
-
-5. **employee.award_code / classification columns don't exist** — these CSVs encode award + classification per employee, but the live tenant schema (`migrations/tenant/V1.08__payroll.sql`) doesn't have those columns. Per-pay-component rows have nowhere to land — `pay_run_line.details_json` is a single JSONB blob. The fixtures await a migration that adds these (per R-0073 / A-0046, in flight on `ledgius-specs#37`).
-
-6. **STP `IncomeType` / `EmploymentBasis` don't match schema enums** — fixtures use `SalaryAndWages` / `full_time` (long form). `migrations/tenant/V1.28__stp_phase2.sql` requires the ATO codes (`SAW` / `F`, `P`, `C`, …). Engine tests would fail every row of this fixture against current schema.
-
-## Engine-side gaps (acknowledged, not a fixture bug)
-
-7. **README's "every CEL/Rego/go-rules outcome asserted" is aspirational** — the live `pkg/rules/bundles/payroll_v1.0.0.yaml` defines six formulas only (`gross_pay_hourly`, `gross_pay_annual`, `payg_coefficient`, `super_guarantee`, `net_pay`, `no_tfn_withholding`). Award penalty rates, casual loading, allowances, leave accrual, RDO, HIG, annualised-wage, STP Phase 2 classification — none have rules in the bundles yet. These fixtures are the **target output** the engine must produce once the matching rules ship per R-0073 / T-0041 (ledgius-specs#37). Reframe as expected-when-shipped, not validated-today.
-
-## Promotion checklist (out of `-draft/`)
-
-Before moving this directory to `qa-05-middle-office-cleaning/`:
-
-- [ ] All fixture-side bugs (#1–#4 above) fixed
-- [ ] Schema-side gaps (#5–#6) resolved by either migration landing or fixtures re-shaped to current schema
-- [ ] Engine-side coverage (#7) has matching rules in `pkg/rules/bundles/au/payroll/MA000002_*` + `MA000022_*`
-- [ ] QA data loader (`ledgius-api/cmd/qa-data-loader`) successfully imports this fixture against a freshly-provisioned tenant DB
-- [ ] At least one engine-vs-fixture diff test passes against this tenant's pay_runs_expected
+- [x] Penalty-rate values verified against live FWC sources
+- [x] AuthorityRefs replaced with real clause references
+- [x] `docs/award_sources.md` fleshed out with proper provenance
+- [ ] Hours × Rate rounding
+- [ ] GL trial balance fix + add Trial-balance-balances validation row
+- [ ] Leave balances proper cumulative computation
+- [ ] STP enum mismatch
+- [ ] PAYG against NAT 1004 (FY2025/26)
+- [ ] Engine has matching rules in `pkg/rules/bundles/au/payroll/MA000002_*` + `MA000022_*` per R-0073
+- [ ] QA data loader successfully imports against freshly-provisioned tenant DB (already verified for non-payroll Xero entities)
+- [ ] Engine-vs-fixture diff test passes

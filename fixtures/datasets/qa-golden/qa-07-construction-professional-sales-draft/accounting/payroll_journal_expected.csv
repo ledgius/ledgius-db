@@ -176,16 +176,16 @@ JNL-000001,25/07/2025,Payroll PAY-20250725-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,25/07/2025,Payroll PAY-20250725-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,25/07/2025,Payroll PAY-20250725-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,01/08/2025,Payroll PAY-20250801-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -396,16 +396,16 @@ JNL-000001,29/08/2025,Payroll PAY-20250829-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,29/08/2025,Payroll PAY-20250829-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,29/08/2025,Payroll PAY-20250829-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,05/09/2025,Payroll PAY-20250905-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -616,16 +616,16 @@ JNL-000001,03/10/2025,Payroll PAY-20251003-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,03/10/2025,Payroll PAY-20251003-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,03/10/2025,Payroll PAY-20251003-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,10/10/2025,Payroll PAY-20251010-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -836,16 +836,16 @@ JNL-000001,07/11/2025,Payroll PAY-20251107-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,07/11/2025,Payroll PAY-20251107-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,07/11/2025,Payroll PAY-20251107-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,14/11/2025,Payroll PAY-20251114-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -1056,16 +1056,16 @@ JNL-000001,12/12/2025,Payroll PAY-20251212-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,12/12/2025,Payroll PAY-20251212-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,12/12/2025,Payroll PAY-20251212-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,19/12/2025,Payroll PAY-20251219-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -1276,16 +1276,16 @@ JNL-000001,16/01/2026,Payroll PAY-20260116-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,16/01/2026,Payroll PAY-20260116-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,16/01/2026,Payroll PAY-20260116-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,23/01/2026,Payroll PAY-20260123-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -1496,16 +1496,16 @@ JNL-000001,20/02/2026,Payroll PAY-20260220-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,20/02/2026,Payroll PAY-20260220-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,20/02/2026,Payroll PAY-20260220-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,27/02/2026,Payroll PAY-20260227-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -1716,16 +1716,16 @@ JNL-000001,27/03/2026,Payroll PAY-20260327-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,27/03/2026,Payroll PAY-20260327-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,27/03/2026,Payroll PAY-20260327-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,03/04/2026,Payroll PAY-20260403-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -1936,16 +1936,16 @@ JNL-000001,01/05/2026,Payroll PAY-20260501-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,01/05/2026,Payroll PAY-20260501-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,01/05/2026,Payroll PAY-20260501-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,08/05/2026,Payroll PAY-20260508-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
@@ -2156,16 +2156,16 @@ JNL-000001,05/06/2026,Payroll PAY-20260605-EMP-GRACE-HIG,1000 Bank Operating Acc
 JNL-000001,05/06/2026,Payroll PAY-20260605-EMP-GRACE-HIG,2310 Superannuation Payable,415.38,,Super clearing house payment
 JNL-000001,05/06/2026,Payroll PAY-20260605-EMP-GRACE-HIG,1000 Bank Operating Account,,415.38,Super clearing house bank payment
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,6000 Wages and Salaries Expense,1191.10,,Gross wages Ben Builder
-JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,6010 Superannuation Expense,142.93,,SG expense Ben Builder
+JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,6010 Superannuation Expense,140.65,,SG expense Ben Builder
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,,204.00,PAYG withheld
-JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2310 Superannuation Payable,,142.93,SG liability
+JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2310 Superannuation Payable,,140.65,SG liability
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2320 Net Wages Payable,,987.10,Net wages payable
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2320 Net Wages Payable,987.10,,Net wage bank payment clearing
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,1000 Bank Operating Account,,987.10,Net wage bank payment
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2300 PAYG Withholding Payable,204.00,,PAYG remittance clearing
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,1000 Bank Operating Account,,204.00,PAYG remittance to ATO
-JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2310 Superannuation Payable,142.93,,Super clearing house payment
-JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,1000 Bank Operating Account,,142.93,Super clearing house bank payment
+JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,2310 Superannuation Payable,140.65,,Super clearing house payment
+JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-BEN-BUILDER,1000 Bank Operating Account,,140.65,Super clearing house bank payment
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-AMARA-ENGINEER,6000 Wages and Salaries Expense,1730.77,,Gross wages Amara Engineer
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-AMARA-ENGINEER,6010 Superannuation Expense,207.69,,SG expense Amara Engineer
 JNL-000001,12/06/2026,Payroll PAY-20260612-EMP-AMARA-ENGINEER,2300 PAYG Withholding Payable,,377.00,PAYG withheld
